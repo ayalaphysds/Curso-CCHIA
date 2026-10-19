@@ -41,8 +41,12 @@ flowchart LR
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
 > - **Unidad Actual:** **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
-> - **Bloque Actual:** **Bloque 2 / Bloque 3 — Inicialización de repo, entorno virtual y preparación de secrets**
-> - **Hito Inmediato:** Configuración del entorno reproducible, pruebas HTTP hacia la API de IA (Bloque 4) y construcción del módulo inicial de consumo (Bloque 5).
+> - **Bloque Actual:** **Bloque 3 — Réplica guiada del setup completo (Entorno virtual y dependencias)**
+> - **Punto Exacto en U1.2:**
+>   - ✅ *Completado:* Bloque 2 finalizado con éxito: Repositorio conectado a GitHub y commit formal registrado (`Estructura base del repositorio`).
+>   - 🟡 *Paso Inmediato (Bloque 3):* Creación y activación de entorno virtual Python (`python -m venv .venv` y activación en PowerShell).
+>   - ⏳ *Siguiente (Bloque 3):* Instalación de dependencias iniciales y congelamiento en `requirements.txt`.
+>   - ⏳ *Siguiente (Bloque 4 - Core):* Variables de entorno (`.env` / `.env.example`) y disparo de la primera petición HTTP autenticada a la API de IA.
 
 ---
 
@@ -55,10 +59,10 @@ flowchart LR
   - [x] Diagnóstico técnico y mapa de módulos, gates y cinturones.
   - [x] El punto de llegada: qué vas a tener construido al terminar.
   - [x] *Actividad Core:* Ficha de alineación técnica y elección de ruta.
-- [ ] **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP** `📍 [ESTAMOS AQUÍ]`
+- [ ] **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
   - [x] Bloque 2: Entorno completo de cero a API y por qué los secretos no van al repo.
-  - [ ] Bloque 2: *Actividad práctica:* Inicializa tu repositorio y haz tu primer commit.
-  - [ ] Bloque 3: Réplica guiada del setup completo (entorno virtual `.venv`, `requirements.txt`).
+  - [x] Bloque 2: *Actividad práctica:* Inicializa tu repositorio y haz tu primer commit [Completado y commiteado].
+  - [ ] Bloque 3: Réplica guiada del setup completo (entorno virtual `.venv`, `requirements.txt`) `📍 [ESTAMOS AQUÍ]`.
   - [ ] Bloque 4: Variables de entorno (`.env`, `.gitignore`).
   - [ ] Bloque 4: Disparo a la API desde Postman / Thunder Client / requests.
   - [ ] Bloque 4: *Actividad core:* Ejecuta tu primera petición autenticada de prueba.
@@ -121,6 +125,11 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | ID | Fecha | Módulo / Tema | Consulta / Pregunta del Usuario | Respuesta / Solución Brindada | Estado |
 | :---: | :---: | :---: | :--- | :--- | :---: |
 | **C-001** | 19-10-2026 | Gestión del Curso | Creación de una bitácora de avance viva para registrar consultas, preguntas, programas y ubicación del curso. | Se analizó el repositorio git y plan de estudios (Skillnest - Accenture), se diseñó la estructura de la bitácora con mapa de unidades, gates, rúbrica, tablas de programas y registro de sesiones. | ✅ Resuelto |
+| **C-002** | 19-10-2026 | U1.2 Setup técnico | Consulta explícita: ¿En qué parte exacta de la U1.2 nos encontramos? | Se analizó la unidad en sus 3 bloques (B2: Repo/Commit, B3: Entorno Virtual/Dependencias, B4: Variables de entorno y Primera petición HTTP). Estamos en el cierre de la Actividad Práctica del Bloque 2 (falta armar estructura `src/`, `docs/`, `tests/`, `.gitignore` y commit), listos para avanzar a Bloque 3 y Bloque 4. | ✅ Resuelto |
+| **C-003** | 19-10-2026 | U1.2 Bloque 2 | Explicación de por qué la Lección 2 se considera completada. | La Lección 2 ("Cómo armar en vivo un entorno completo, de cero a API") es demostrativa y referencial (`Hecho: Ver`). El texto estipula que el alumno solo debe observar y comprender el flujo global sin ejecutar código aún, pasando la acción práctica a la actividad siguiente ("Inicializa tu repositorio"). | ✅ Resuelto |
+| **C-004** | 19-10-2026 | U1.2 Bloque 2 | Verificación de archivos traídos desde disco duro externo (Plantilla ZIP y PDFs). | Se verificó que los 40 PDFs y el ZIP de la plantilla corresponden exactamente al curso. Se identificaron correcciones estructurales: extraer la plantilla en la raíz del repo de código y reubicar la carpeta pesada de PDFs fuera de `Curso-CCHIA` para cumplir la rúbrica del Gate 1. | ✅ Resuelto |
+| **C-005** | 19-10-2026 | U1.2 Bloque 2 | Reorganización y extracción de documentos del archivo ZIP en la carpeta particular de la lección. | Se crearon las carpetas organizadas en `Material de Estudio\`, se extrajeron los archivos de la plantilla base en la lección U1.2 (`Plantilla Repositorio Base`), y se desplegó la estructura requerida en la raíz de `Curso-CCHIA` dejando el repositorio listo para el primer commit. | ✅ Resuelto |
+| **C-006** | 19-10-2026 | U1.2 Bloque 2 | Registro del commit formal de inicialización con la estructura base del repositorio. | Se versionaron y commitearon formalmente los archivos de la plantilla base (`src/`, `docs/`, `tests/`, `requirements.txt`, `README.md`, `.gitignore`, `.env.example`, `BITACORA_DE_AVANCE.md`) con el mensaje oficial `"Estructura base del repositorio"`, empujando los cambios a GitHub. Bloque 2 completado. | ✅ Resuelto |
 
 ---
 
