@@ -58,14 +58,14 @@ flowchart LR
   - [x] Diagnóstico técnico y mapa de módulos, gates y cinturones.
   - [x] El punto de llegada: qué vas a tener construido al terminar.
   - [x] *Actividad Core:* Ficha de alineación técnica y elección de ruta.
-- [ ] **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
+- [x] **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
   - [x] Bloque 2: Entorno completo de cero a API y por qué los secretos no van al repo.
   - [x] Bloque 2: *Actividad práctica:* Inicializa tu repositorio y haz tu primer commit [Completado y commiteado].
   - [x] Bloque 3: Réplica guiada del setup completo (entorno virtual `.venv`, `requirements.txt`) [Completado y validado].
-  - [ ] Bloque 4: Variables de entorno (`.env`, `.gitignore`) `📍 [ESTAMOS AQUÍ]`.
-  - [ ] Bloque 4: Disparo a la API desde Postman / Thunder Client / requests.
-  - [ ] Bloque 4: *Actividad core:* Ejecuta tu primera petición autenticada de prueba.
-- [ ] **U1.3 Python aplicado para integración con IA**
+  - [x] Bloque 4: Variables de entorno (`.env`, `.gitignore`) [Completado y protegido].
+  - [x] Bloque 4: Disparo a la API desde Postman / Thunder Client / requests [Completado y probado].
+  - [x] Bloque 4: *Actividad core:* Ejecuta tu primera petición autenticada de prueba [Completado, evidencia generada en docs/].
+- [ ] **U1.3 Python aplicado para integración con IA** `📍 [SIGUIENTE PASO]`
   - [ ] Bloque 5: *Actividad práctica:* Primer módulo Python de consumo de servicios externos (`functions`, `json`).
   - [ ] Bloque 5: Manejo de errores de red inducidos a propósito.
   - [ ] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo.
@@ -114,8 +114,8 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | :--- | :--- | :---: | :--- |
 | **1. Código ejecutable** | La aplicación corre de punta a punta sin excepciones no capturadas. | ⏳ Pendiente | Pendiente desarrollo en U1.3 |
 | **2. Entorno reproducible** | `requirements.txt` documentado y ejecutable en cualquier máquina con `pip install -r requirements.txt`. | ✅ Cumplido | Entorno `.venv` creado; librerías fijadas en `requirements.txt` |
-| **3. Credenciales protegidas** | El archivo `.env` está en `.gitignore`. Nunca se commitea la API key real. | ⏳ En proceso | `.gitignore` configurado; verificar con `git status` |
-| **4. Consumo exitoso de API** | La petición recibe respuesta HTTP 200 con payload válido del modelo. | ⏳ Pendiente | Pendiente prueba en U1.2 Bloque 4 |
+| **3. Credenciales protegidas** | El archivo `.env` está en `.gitignore`. Nunca se commitea la API key real. | ✅ Cumplido | `.env` excluido en `.gitignore:7`; validado con `git status` y `git check-ignore` |
+| **4. Consumo exitoso de API** | La petición recibe respuesta HTTP 200 con payload válido del modelo. | ✅ Cumplido | Petición ejecutada con `gemini-3.5-flash`; evidencia guardada en `docs/evidencia_peticion_autenticada.json` |
 
 ---
 
@@ -135,7 +135,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-010** | 19-10-2026 | U1.2 Bloque 3 | Cómo crear y gestionar 2 programas simples con versiones diferentes de librerías usando entornos separados. | Se explicó el problema del choque de dependencias y la solución mediante 2 entornos aislados (`venv_a` y `venv_b`) ejecutando versiones distintas de un mismo paquete sin interferencias. | ✅ Resuelto |
 | **C-011** | 19-10-2026 | U1.2 Bloque 3 | Error `[Errno 2] No such file or directory: app.py` en app_antigua. | El usuario siguió correctamente los pasos de creación de carpeta, `.venv`, instalación de versión antigua (`urllib3==1.26.18`) y `requirements.txt`. El error se debió a que faltaba crear el archivo `app.py` en dicha carpeta antes de invocarlo. Se crearon `app.py` en `app_antigua` y `app_moderna`, comprobando la coexistencia de versiones. | ✅ Resuelto |
 | **C-012** | 19-10-2026 | Git y Versionamiento | Consulta: ¿Todo lo que coloque en `.gitignore` no será contemplado por Git y GitHub? | Se detalló la regla general (ignora archivos no rastreados) y la regla de oro/excepción: si un archivo ya fue commiteado antes de añadirlo a `.gitignore`, Git continuará rastreándolo a menos que se use `git rm --cached`. Se vinculó con la protección de secretos (`.env`) del Gate 1. | ✅ Resuelto |
-| **C-013** | 19-10-2026 | U1.2 Bloque 4 | Inicio del Bloque 4: Variables de entorno y primera petición HTTP autenticada. | Creación de `.env` a partir de `.env.example`, confirmación de exclusión en `.gitignore` (`git check-ignore -v .env`), y diseño del script de verificación y consumo `src/probar_conexion_api.py`. | ⏳ En Progreso |
+| **C-013** | 19-10-2026 | U1.2 Bloque 4 | Inicio y ejecución del Bloque 4: Variables de entorno y primera petición HTTP autenticada. | Configuración de `.env` a partir de `.env.example`, confirmación de exclusión activa en `.gitignore`, ejecución de petición HTTP 200 OK con Gemini API (`gemini-3.5-flash`), y generación de archivo de evidencia en `docs/evidencia_peticion_autenticada.json` con credenciales ofuscadas. | ✅ Resuelto |
 
 ---
 
@@ -145,7 +145,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
-| **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ⏳ Listo para prueba |
+| **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ✅ Probado y Generado |
 
 ---
 

@@ -48,7 +48,7 @@ def ejecutar_prueba():
     load_dotenv(dotenv_path=env_path)
     api_key = os.getenv("GEMINI_API_KEY")
 
-    if not api_key or api_key == "tu_llave_aqui" or "AIzaSy" not in api_key:
+    if not api_key or api_key.strip() in ("", "tu_llave_aqui") or len(api_key.strip()) < 10:
         print("\n[ALERTA] La variable GEMINI_API_KEY no tiene un valor válido configurado.")
         print(f"Valor actual detectado: {api_key if api_key else 'None'}")
         print("Por favor abre .env y pega tu API Key real de Google AI Studio.")
@@ -59,9 +59,8 @@ def ejecutar_prueba():
     print(f"    - Credencial protegida (ofuscada): {ofuscar_clave(api_key)}")
 
     # 2. Configurar petición HTTP a Gemini API
-    # Usamos gemini-1.5-flash (modelo ligero y estándar del curso)
-    model_name = "gemini-1.5-flash"
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
+    # Probamos con modelos compatibles de alta velocidad (gemini-3.5-flash / gemini-3.5-flash-lite / gemini-3.6-flash)
+    modelos_candidatos = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.6-flash"]
     
     headers = {
         "Content-Type": "application/json",
@@ -78,76 +77,83 @@ def ejecutar_prueba():
         ]
     }
 
-    print(f"\n[2] Enviando petición HTTP POST a:")
-    print(f"    - Endpoint: {url}")
-    print(f"    - Headers: Content-Type: application/json, x-goog-api-key: [OCULTA]")
-    
-    try:
-        response = requests.post(url, headers=headers, json=payload, timeout=15)
-        status_code = response.status_code
-        print(f"\n[3] Código de respuesta HTTP: {status_code} ({response.reason})")
+    exito = False
+    for model_name in modelos_candidatos:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent"
+        print(f"\n[2] Probando conexión HTTP POST con modelo: {model_name}")
+        print(f"    - Endpoint: {url}")
+        print(f"    - Headers: Content-Type: application/json, x-goog-api-key: [OCULTA]")
 
-        if status_code == 200:
-            data = response.json()
-            # Extraer texto generado
-            candidates = data.get("candidates", [])
-            texto_generado = ""
-            if candidates:
-                parts = candidates[0].get("content", {}).get("parts", [])
-                if parts:
-                    texto_generado = parts[0].get("text", "")
+        try:
+            response = requests.post(url, headers=headers, json=payload, timeout=35)
+            status_code = response.status_code
+            print(f"    - Código de respuesta HTTP: {status_code} ({response.reason})")
 
-            print("\n" + "-" * 70)
-            print("[PETICIÓN EXITOSA - STATUS 200 OK]")
-            print(f"Respuesta generada por el modelo:\n\n{texto_generado.strip()}")
-            print("-" * 70)
+            if status_code == 200:
+                data = response.json()
+                # Extraer texto generado
+                candidates = data.get("candidates", [])
+                texto_generado = ""
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts:
+                        texto_generado = parts[0].get("text", "")
 
-            # 3. Guardar evidencia en docs/ para el entregable de la actividad core
-            docs_dir = os.path.join(base_dir, "docs")
-            os.makedirs(docs_dir, exist_ok=True)
-            evidencia_path = os.path.join(docs_dir, "evidencia_peticion_autenticada.json")
+                print("\n" + "=" * 70)
+                print("[PETICIÓN EXITOSA - STATUS 200 OK]")
+                print(f"Modelo: {model_name}")
+                print(f"Respuesta generada por el modelo:\n\n{texto_generado.strip()}")
+                print("=" * 70)
 
-            evidencia_data = {
-                "actividad": "U1.2 Bloque 4 - Ejecuta tu primera peticion autenticada de prueba [Actividad core]",
-                "fecha_ejecucion": datetime.now().isoformat(),
-                "endpoint": f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent",
-                "metodo": "POST",
-                "codigo_estado": status_code,
-                "mensaje_estado": response.reason,
-                "modelo_consultado": model_name,
-                "credencial_utilizada": ofuscar_clave(api_key),
-                "respuesta_modelo": texto_generado.strip(),
-                "seguridad_credenciales": "Credencial protegida en .env y excluida via .gitignore. Ningun secreto expuesto."
-            }
+                # 3. Guardar evidencia en docs/ para el entregable de la actividad core
+                docs_dir = os.path.join(base_dir, "docs")
+                os.makedirs(docs_dir, exist_ok=True)
+                evidencia_path = os.path.join(docs_dir, "evidencia_peticion_autenticada.json")
 
-            with open(evidencia_path, "w", encoding="utf-8") as f:
-                json.dump(evidencia_data, f, indent=2, ensure_ascii=False)
+                evidencia_data = {
+                    "actividad": "U1.2 Bloque 4 - Ejecuta tu primera peticion autenticada de prueba [Actividad core]",
+                    "fecha_ejecucion": datetime.now().isoformat(),
+                    "endpoint": f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent",
+                    "metodo": "POST",
+                    "codigo_estado": status_code,
+                    "mensaje_estado": response.reason,
+                    "modelo_consultado": model_name,
+                    "credencial_utilizada": ofuscar_clave(api_key),
+                    "respuesta_modelo": texto_generado.strip(),
+                    "seguridad_credenciales": "Credencial protegida en .env y excluida via .gitignore. Ningun secreto expuesto."
+                }
 
-            print(f"\n[4] ¡Evidencia guardada exitosamente en docs/!")
-            print(f"    Ruta: docs/evidencia_peticion_autenticada.json")
-            print("\nEsta evidencia cumple con todos los requisitos del Gate 1:")
-            print("  ✓ Endpoint documentado")
-            print("  ✓ Código 200 OK comprobado")
-            print("  ✓ Respuesta real generada")
-            print("  ✓ Credenciales 100% protegidas y ofuscadas")
-            return True
+                with open(evidencia_path, "w", encoding="utf-8") as f:
+                    json.dump(evidencia_data, f, indent=2, ensure_ascii=False)
 
-        elif status_code in (401, 403):
-            print("\n[ERROR DE AUTENTICACIÓN - CÓDIGO 401/403]")
-            print("Tu API Key no fue aceptada por Google Gemini.")
-            print(f"Detalle devuelto por la API: {response.text}")
-            return False
-        elif status_code == 429:
-            print("\n[LÍMITE EXCEDIDO - CÓDIGO 429]")
-            print("Has alcanzado la cuota de peticiones por minuto. Espera un momento y reintenta.")
-            return False
-        else:
-            print(f"\n[ERROR HTTP {status_code}]")
-            print(f"Detalle: {response.text}")
-            return False
+                print(f"\n[3] ¡Evidencia guardada exitosamente en docs/!")
+                print(f"    Ruta: docs/evidencia_peticion_autenticada.json")
+                print("\nEsta evidencia cumple con todos los requisitos del Gate 1:")
+                print("  ✓ Endpoint documentado")
+                print("  ✓ Código 200 OK comprobado")
+                print("  ✓ Respuesta real generada")
+                print("  ✓ Credenciales 100% protegidas y ofuscadas")
+                exito = True
+                return True
 
-    except requests.exceptions.RequestException as e:
-        print(f"\n[ERROR DE CONEXIÓN]: No se pudo conectar con el servidor: {e}")
+            elif status_code in (401, 403):
+                print("\n[ERROR DE AUTENTICACIÓN - CÓDIGO 401/403]")
+                print("Tu API Key no fue aceptada por Google Gemini.")
+                print(f"Detalle devuelto por la API: {response.text}")
+                return False
+            elif status_code in (429, 503):
+                print(f"    - Modelo ocupado ({status_code}). Intentando con modelo alternativo...")
+                continue
+            else:
+                print(f"    - Respuesta no esperada: {status_code}. Intentando siguiente modelo...")
+                continue
+
+        except requests.exceptions.RequestException as e:
+            print(f"    - Error de red al consultar {model_name}: {e}. Intentando siguiente modelo...")
+            continue
+
+    if not exito:
+        print("\n[ALERTA] No se pudo obtener respuesta 200 en los modelos intentados. Reintenta en unos instantes.")
         return False
 
 if __name__ == "__main__":

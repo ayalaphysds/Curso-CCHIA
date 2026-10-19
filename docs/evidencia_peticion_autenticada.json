@@ -1,0 +1,12 @@
+{
+  "actividad": "U1.2 Bloque 4 - Ejecuta tu primera peticion autenticada de prueba [Actividad core]",
+  "fecha_ejecucion": "2026-10-19T14:32:14.352705",
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
+  "metodo": "POST",
+  "codigo_estado": 200,
+  "mensaje_estado": "OK",
+  "modelo_consultado": "gemini-3.5-flash",
+  "credencial_utilizada": "AQ.Ab8...LcHQ",
+  "respuesta_modelo": "¡Hola! Para poder confirmarte si la conexión funciona correctamente, **necesito que compartas el código, comando o los detalles de la petición** que estás intentando ejecutar.\n\nPor favor, adjunta aquí:\n\n1. **El código o comando** que estás usando (por ejemplo, un script en Python, cURL, JavaScript, etc.).\n2. **El código de estado HTTP (Status Code)** que estás recibiendo (por ejemplo: `200`, `401`, `403`, `500`).\n3. **El mensaje de respuesta** (Response body) o cualquier error que te aparezca en consola.\n\n---\n\n### 💡 Guía rápida de verificación:\n* **`200 OK`**: La autenticación fue exitosa y el servidor devolvió los datos correctamente.\n* **`401 Unauthorized`**: Hubo un problema con la autenticación (token/API Key/usuario/contraseña incorrectos o expirados).\n* **`403 Forbidden`**: Las credenciales son válidas, pero no tienes permiso para acceder a ese recurso específico.\n\nQuedo atento a los detalles que compartas para revisarlos de inmediato.",
+  "seguridad_credenciales": "Credencial protegida en .env y excluida via .gitignore. Ningun secreto expuesto."
+}
