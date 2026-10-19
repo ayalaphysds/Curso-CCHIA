@@ -40,12 +40,13 @@ flowchart LR
 
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
-> - **Bloque Actual:** **Bloque 4 — Variables de entorno y primera petición HTTP autenticada [Actividad Core]**
-> - **Punto Exacto en U1.2:**
+> - **Unidad Actual:** **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP** `[COMPLETADA]`
+> - **Bloque Actual:** **Bloque 4 — Variables de entorno y primera petición HTTP autenticada [Actividad Core]** `[ENTREGADO]`
+> - **Punto Exacto:**
 >   - ✅ *Completado:* Bloque 2 finalizado: Repositorio base formalmente commiteado.
->   - ✅ *Completado:* Bloque 3 finalizado: Entorno virtual `.venv` creado, librerías (`requests`, `python-dotenv`) instaladas, dependencias fijadas en `requirements.txt` y script de diagnóstico `src/verificar_entorno.py` validado.
->   - 🟡 *Paso Inmediato (Bloque 4):* Configurar variables de entorno (`.env` vs `.env.example`) y ejecutar la primera petición HTTP autenticada a la API de IA (Actividad Core entregable de la U1.2).
+>   - ✅ *Completado:* Bloque 3 finalizado: Entorno virtual `.venv` creado, dependencias fijadas y validación empírica completada.
+>   - ✅ *Completado:* Bloque 4 finalizado: Credenciales protegidas en `.env`, petición 200 OK a Gemini API, evidencia guardada en `docs/` y repositorio entregado en Skillnest.
+>   - 📍 *Siguiente paso:* **U1.3 Python aplicado para integración con IA** (Bloque 5: Primer módulo Python de consumo de servicios).
 
 ---
 
@@ -136,6 +137,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-011** | 19-10-2026 | U1.2 Bloque 3 | Error `[Errno 2] No such file or directory: app.py` en app_antigua. | El usuario siguió correctamente los pasos de creación de carpeta, `.venv`, instalación de versión antigua (`urllib3==1.26.18`) y `requirements.txt`. El error se debió a que faltaba crear el archivo `app.py` en dicha carpeta antes de invocarlo. Se crearon `app.py` en `app_antigua` y `app_moderna`, comprobando la coexistencia de versiones. | ✅ Resuelto |
 | **C-012** | 19-10-2026 | Git y Versionamiento | Consulta: ¿Todo lo que coloque en `.gitignore` no será contemplado por Git y GitHub? | Se detalló la regla general (ignora archivos no rastreados) y la regla de oro/excepción: si un archivo ya fue commiteado antes de añadirlo a `.gitignore`, Git continuará rastreándolo a menos que se use `git rm --cached`. Se vinculó con la protección de secretos (`.env`) del Gate 1. | ✅ Resuelto |
 | **C-013** | 19-10-2026 | U1.2 Bloque 4 | Inicio y ejecución del Bloque 4: Variables de entorno y primera petición HTTP autenticada. | Configuración de `.env` a partir de `.env.example`, confirmación de exclusión activa en `.gitignore`, ejecución de petición HTTP 200 OK con Gemini API (`gemini-3.5-flash`), y generación de archivo de evidencia en `docs/evidencia_peticion_autenticada.json` con credenciales ofuscadas. | ✅ Resuelto |
+| **C-014** | 19-10-2026 | U1.2 Bloque 4 | Validación del link y formato de entrega en Skillnest para el Bloque 4. | Se analizó la consigna oficial del Bloque 4 ("pega el enlace de tu repositorio de GitHub como texto en el campo de entrega"). Se confirmó que la pestaña "Enlace" es la correcta y se recomendó usar la URL web canónica `https://github.com/ayalaphysds/Curso-CCHIA` (sin el `.git`) para asegurar que el evaluador acceda directamente a la vista de código en el navegador sin redirecciones. Se verificó el cumplimiento de los 6 criterios de la lista de cotejo. | ✅ Resuelto |
 
 ---
 
