@@ -135,6 +135,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-010** | 19-10-2026 | U1.2 Bloque 3 | Cómo crear y gestionar 2 programas simples con versiones diferentes de librerías usando entornos separados. | Se explicó el problema del choque de dependencias y la solución mediante 2 entornos aislados (`venv_a` y `venv_b`) ejecutando versiones distintas de un mismo paquete sin interferencias. | ✅ Resuelto |
 | **C-011** | 19-10-2026 | U1.2 Bloque 3 | Error `[Errno 2] No such file or directory: app.py` en app_antigua. | El usuario siguió correctamente los pasos de creación de carpeta, `.venv`, instalación de versión antigua (`urllib3==1.26.18`) y `requirements.txt`. El error se debió a que faltaba crear el archivo `app.py` en dicha carpeta antes de invocarlo. Se crearon `app.py` en `app_antigua` y `app_moderna`, comprobando la coexistencia de versiones. | ✅ Resuelto |
 | **C-012** | 19-10-2026 | Git y Versionamiento | Consulta: ¿Todo lo que coloque en `.gitignore` no será contemplado por Git y GitHub? | Se detalló la regla general (ignora archivos no rastreados) y la regla de oro/excepción: si un archivo ya fue commiteado antes de añadirlo a `.gitignore`, Git continuará rastreándolo a menos que se use `git rm --cached`. Se vinculó con la protección de secretos (`.env`) del Gate 1. | ✅ Resuelto |
+| **C-013** | 19-10-2026 | U1.2 Bloque 4 | Inicio del Bloque 4: Variables de entorno y primera petición HTTP autenticada. | Creación de `.env` a partir de `.env.example`, confirmación de exclusión en `.gitignore` (`git check-ignore -v .env`), y diseño del script de verificación y consumo `src/probar_conexion_api.py`. | ⏳ En Progreso |
 
 ---
 
@@ -144,6 +145,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
+| **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ⏳ Listo para prueba |
 
 ---
 
