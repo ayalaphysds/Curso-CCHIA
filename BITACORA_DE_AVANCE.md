@@ -41,12 +41,11 @@ flowchart LR
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
 > - **Unidad Actual:** **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
-> - **Bloque Actual:** **Bloque 3 — Réplica guiada del setup completo (Entorno virtual y dependencias)**
+> - **Bloque Actual:** **Bloque 4 — Variables de entorno y primera petición HTTP autenticada [Actividad Core]**
 > - **Punto Exacto en U1.2:**
->   - ✅ *Completado:* Bloque 2 finalizado con éxito: Repositorio conectado a GitHub y commit formal registrado (`Estructura base del repositorio`).
->   - 🟡 *Paso Inmediato (Bloque 3):* Creación y activación de entorno virtual Python (`python -m venv .venv` y activación en PowerShell).
->   - ⏳ *Siguiente (Bloque 3):* Instalación de dependencias iniciales y congelamiento en `requirements.txt`.
->   - ⏳ *Siguiente (Bloque 4 - Core):* Variables de entorno (`.env` / `.env.example`) y disparo de la primera petición HTTP autenticada a la API de IA.
+>   - ✅ *Completado:* Bloque 2 finalizado: Repositorio base formalmente commiteado.
+>   - ✅ *Completado:* Bloque 3 finalizado: Entorno virtual `.venv` creado, librerías (`requests`, `python-dotenv`) instaladas, dependencias fijadas en `requirements.txt` y script de diagnóstico `src/verificar_entorno.py` validado.
+>   - 🟡 *Paso Inmediato (Bloque 4):* Configurar variables de entorno (`.env` vs `.env.example`) y ejecutar la primera petición HTTP autenticada a la API de IA (Actividad Core entregable de la U1.2).
 
 ---
 
@@ -62,8 +61,8 @@ flowchart LR
 - [ ] **U1.2 Setup técnico: terminal, Git, entorno Python y cliente HTTP**
   - [x] Bloque 2: Entorno completo de cero a API y por qué los secretos no van al repo.
   - [x] Bloque 2: *Actividad práctica:* Inicializa tu repositorio y haz tu primer commit [Completado y commiteado].
-  - [ ] Bloque 3: Réplica guiada del setup completo (entorno virtual `.venv`, `requirements.txt`) `📍 [ESTAMOS AQUÍ]`.
-  - [ ] Bloque 4: Variables de entorno (`.env`, `.gitignore`).
+  - [x] Bloque 3: Réplica guiada del setup completo (entorno virtual `.venv`, `requirements.txt`) [Completado y validado].
+  - [ ] Bloque 4: Variables de entorno (`.env`, `.gitignore`) `📍 [ESTAMOS AQUÍ]`.
   - [ ] Bloque 4: Disparo a la API desde Postman / Thunder Client / requests.
   - [ ] Bloque 4: *Actividad core:* Ejecuta tu primera petición autenticada de prueba.
 - [ ] **U1.3 Python aplicado para integración con IA**
@@ -114,7 +113,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | Criterio Crítico | Requisito | Estado | Evidencia / Verificación |
 | :--- | :--- | :---: | :--- |
 | **1. Código ejecutable** | La aplicación corre de punta a punta sin excepciones no capturadas. | ⏳ Pendiente | Pendiente desarrollo en U1.3 |
-| **2. Entorno reproducible** | `requirements.txt` documentado y ejecutable en cualquier máquina con `pip install -r requirements.txt`. | ⏳ Pendiente | Pendiente creación de `.venv` y freeze |
+| **2. Entorno reproducible** | `requirements.txt` documentado y ejecutable en cualquier máquina con `pip install -r requirements.txt`. | ✅ Cumplido | Entorno `.venv` creado; librerías fijadas en `requirements.txt` |
 | **3. Credenciales protegidas** | El archivo `.env` está en `.gitignore`. Nunca se commitea la API key real. | ⏳ En proceso | `.gitignore` configurado; verificar con `git status` |
 | **4. Consumo exitoso de API** | La petición recibe respuesta HTTP 200 con payload válido del modelo. | ⏳ Pendiente | Pendiente prueba en U1.2 Bloque 4 |
 
@@ -131,6 +130,8 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-005** | 19-10-2026 | U1.2 Bloque 2 | Reorganización y extracción de documentos del archivo ZIP en la carpeta particular de la lección. | Se crearon las carpetas organizadas en `Material de Estudio\`, se extrajeron los archivos de la plantilla base en la lección U1.2 (`Plantilla Repositorio Base`), y se desplegó la estructura requerida en la raíz de `Curso-CCHIA` dejando el repositorio listo para el primer commit. | ✅ Resuelto |
 | **C-006** | 19-10-2026 | U1.2 Bloque 2 | Registro del commit formal de inicialización con la estructura base del repositorio. | Se versionaron y commitearon formalmente los archivos de la plantilla base (`src/`, `docs/`, `tests/`, `requirements.txt`, `README.md`, `.gitignore`, `.env.example`, `BITACORA_DE_AVANCE.md`) con el mensaje oficial `"Estructura base del repositorio"` (Commit `15b54e7`), empujando los cambios a GitHub. Bloque 2 completado exitosamente. | ✅ Resuelto |
 | **C-007** | 19-10-2026 | Entorno y Herramientas | Consulta: ¿Se puede realizar el curso de la CCHIA empleando Antigravity en lugar de VS Code? | Sí, totalmente viable y ventajoso. Antigravity está construido sobre el ecosistema Code-OSS (VS Code), por lo que comparte terminal, extensiones y gestión de Git. Lo que evalúa el programa son los entregables en GitHub y la ejecución reproducible en terminal, no el editor utilizado. | ✅ Resuelto |
+| **C-008** | 19-10-2026 | U1.2 Bloque 3 | Creación y uso eficiente de entornos virtuales, y validación mediante scripts comparativos. | Se creó el entorno virtual `.venv`, se instalaron `requests` y `python-dotenv`, se congeló en `requirements.txt`, y se construyó el programa `src/verificar_entorno.py` para demostrar empíricamente el aislamiento entre el entorno virtual y el global. | ✅ Resuelto |
+| **C-009** | 19-10-2026 | U1.2 Bloque 3 | Error `CommandNotFoundException` al ejecutar `.\.venv\Scripts\Activate.ps1`. | El error se produjo porque la terminal estaba abierta en la carpeta raíz `Curso CCHIA` y no dentro del repositorio `Curso-CCHIA` (donde reside `.venv`). Se resolvió explicando la navegación con `cd Curso-CCHIA` y la selección del intérprete en Antigravity. | ✅ Resuelto |
 
 ---
 
@@ -139,6 +140,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | ID | Fecha | Archivo / Componente | Lenguaje / Tipo | Módulo / Unidad | Propósito / Funcionalidad | Estado |
 | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
+| **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
 
 ---
 
