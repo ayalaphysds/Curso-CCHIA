@@ -41,10 +41,11 @@ flowchart LR
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
 > - **Unidad Actual:** **U1.3 Python aplicado para integración con IA**
-> - **Bloque Actual:** **Bloque 5 — Primer módulo Python que consume un servicio externo** `[COMPLETADO]`
+> - **Bloque Actual:** **Bloque 6 — Refactorización del script en funciones reutilizables** `[COMPLETADO]`
 > - **Punto Exacto en U1.3:**
->   - ✅ *Completado:* Bloque 5 finalizado: Módulo `src/consumir_gemini.py` creado con principio de responsabilidad única, petición POST funcional con Gemini API y test de contención de errores en `tests/test_conexion.py`.
->   - 📍 *Siguiente paso:* **Bloque 6 — Refactorización del script en funciones reutilizables**.
+>   - ✅ *Completado:* Bloque 5 finalizado: Primer módulo funcional de consumo de servicios externos.
+>   - ✅ *Completado:* Bloque 6 finalizado: Refactorización en funciones reutilizables (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `obtener_dato_de_prueba`) con principio de responsabilidad única validado y probado por partes.
+>   - 📍 *Siguiente paso:* **Bloque 7 — Manejo de excepciones y validación de entradas [Actividad Core Entregable de la U1.3]**.
 
 ---
 
@@ -67,8 +68,8 @@ flowchart LR
 - [ ] **U1.3 Python aplicado para integración con IA**
   - [x] Bloque 5: *Actividad práctica:* Primer módulo Python de consumo de servicios externos (`functions`, `json`).
   - [x] Bloque 5: Manejo de errores de red inducidos a propósito.
-  - [ ] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo. `📍 [SIGUIENTE PASO]`
-  - [ ] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código.
+  - [x] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo.
+  - [ ] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código. `📍 [SIGUIENTE PASO]`
   - [ ] Bloque 7: *Actividad core:* Incorpora excepciones, validación y commit de avance.
 - [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones**
   - [ ] Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo.
@@ -137,6 +138,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-013** | 19-10-2026 | U1.2 Bloque 4 | Inicio y ejecución del Bloque 4: Variables de entorno y primera petición HTTP autenticada. | Configuración de `.env` a partir de `.env.example`, confirmación de exclusión activa en `.gitignore`, ejecución de petición HTTP 200 OK con Gemini API (`gemini-3.5-flash`), y generación de archivo de evidencia en `docs/evidencia_peticion_autenticada.json` con credenciales ofuscadas. | ✅ Resuelto |
 | **C-014** | 19-10-2026 | U1.2 Bloque 4 | Validación del link y formato de entrega en Skillnest para el Bloque 4. | Se analizó la consigna oficial del Bloque 4 ("pega el enlace de tu repositorio de GitHub como texto en el campo de entrega"). Se confirmó que la pestaña "Enlace" es la correcta y se recomendó usar la URL web canónica `https://github.com/ayalaphysds/Curso-CCHIA` (sin el `.git`) para asegurar que el evaluador acceda directamente a la vista de código en el navegador sin redirecciones. Se verificó el cumplimiento de los 6 criterios de la lista de cotejo. | ✅ Resuelto |
 | **C-015** | 19-10-2026 | U1.3 Bloque 5 | Desarrollo y ejecución completa de las actividades del Bloque 5. | Se implementó el módulo `src/consumir_gemini.py` con principio de responsabilidad única (extracción limpia y `return` del texto), lectura de variables de entorno y llamada HTTP POST con `requests`. Se validó la ejecución e importación del módulo con respuesta real de Gemini API. Se implementó el script de demostración de error de red en `tests/test_conexion.py`. | ✅ Resuelto |
+| **C-016** | 19-10-2026 | U1.3 Bloque 6 | Refactorización del script en funciones reutilizables con responsabilidad única. | Se refactorizó `src/consumir_gemini.py` dividiéndolo en 3 funciones especializadas (`armar_peticion`, `enviar_peticion`, `extraer_texto`) y la coordinadora `obtener_dato_de_prueba`. Se mantuvieron la firma externa y el comportamiento intacto. Se validó cada función individualmente y de punta a punta. Se versionó bajo el commit `"Refactorizar módulo en funciones separadas"`. | ✅ Resuelto |
 
 ---
 
@@ -147,7 +149,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
 | **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ✅ Probado y Generado |
-| **PRG-004** | 19-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.3 Bloque 5 | Primer módulo Python funcional que consume Gemini API con responsabilidad única (`return`, sin prints internos). | ✅ Probado y Validado |
+| **PRG-004** | 19-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.3 Bloque 6 | Módulo refactorizado en funciones reutilizables (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `obtener_dato_de_prueba`) con responsabilidad única estricta. | ✅ Refactorizado y Validado |
 | **PRG-005** | 19-10-2026 | [`tests/test_conexion.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_conexion.py) | Python | U1.3 Bloque 5 | Script de demostración de error de red inducido a propósito y contención controlada vía `try-except`. | ✅ Probado |
 
 ---
