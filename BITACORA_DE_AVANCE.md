@@ -40,12 +40,13 @@ flowchart LR
 
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.3 Python aplicado para integración con IA**
-> - **Bloque Actual:** **Bloque 6 — Refactorización del script en funciones reutilizables** `[COMPLETADO]`
+> - **Unidad Actual:** **U1.3 Python aplicado para integración con IA** `[COMPLETADA]`
+> - **Bloque Actual:** **Bloque 7 — Manejo de excepciones y validación de entradas [Actividad Core]** `[COMPLETADO]`
 > - **Punto Exacto en U1.3:**
 >   - ✅ *Completado:* Bloque 5 finalizado: Primer módulo funcional de consumo de servicios externos.
->   - ✅ *Completado:* Bloque 6 finalizado: Refactorización en funciones reutilizables (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `obtener_dato_de_prueba`) con principio de responsabilidad única validado y probado por partes.
->   - 📍 *Siguiente paso:* **Bloque 7 — Manejo de excepciones y validación de entradas [Actividad Core Entregable de la U1.3]**.
+>   - ✅ *Completado:* Bloque 6 finalizado: Refactorización en funciones reutilizables con principio de responsabilidad única.
+>   - ✅ *Completado:* Bloque 7 finalizado: Validación temprana (`ValueError`), contención de errores de conexión/timeout/JSON/datos faltantes (`RuntimeError`), y suite `tests/test_consumir_gemini.py` (6/6 tests passing). Unidad U1.3 cerrada y lista para entrega en Skillnest.
+>   - 📍 *Siguiente paso:* **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** (Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo).
 
 ---
 
@@ -65,13 +66,13 @@ flowchart LR
   - [x] Bloque 4: Variables de entorno (`.env`, `.gitignore`) [Completado y protegido].
   - [x] Bloque 4: Disparo a la API desde Postman / Thunder Client / requests [Completado y probado].
   - [x] Bloque 4: *Actividad core:* Ejecuta tu primera petición autenticada de prueba [Completado, evidencia generada en docs/].
-- [ ] **U1.3 Python aplicado para integración con IA**
+- [x] **U1.3 Python aplicado para integración con IA** `[COMPLETADA]`
   - [x] Bloque 5: *Actividad práctica:* Primer módulo Python de consumo de servicios externos (`functions`, `json`).
   - [x] Bloque 5: Manejo de errores de red inducidos a propósito.
   - [x] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo.
-  - [ ] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código. `📍 [SIGUIENTE PASO]`
-  - [ ] Bloque 7: *Actividad core:* Incorpora excepciones, validación y commit de avance.
-- [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones**
+  - [x] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código.
+  - [x] Bloque 7: *Actividad core:* Incorpora excepciones, validación y commit de avance.
+- [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `📍 [SIGUIENTE PASO]`
   - [ ] Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo.
   - [ ] Bloque 8: *Actividad práctica:* Diagrama la arquitectura de tu miniaplicación.
   - [ ] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala).
@@ -112,7 +113,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 
 | Criterio Crítico | Requisito | Estado | Evidencia / Verificación |
 | :--- | :--- | :---: | :--- |
-| **1. Código ejecutable** | La aplicación corre de punta a punta sin excepciones no capturadas. | ⏳ Pendiente | Pendiente desarrollo en U1.3 |
+| **1. Código ejecutable** | La aplicación corre de punta a punta sin excepciones no capturadas. | ✅ Cumplido | Módulo `src/consumir_gemini.py` blindado con validaciones y captura de excepciones; suite `tests/test_consumir_gemini.py` pasando 6/6 tests sin caídas abruptas |
 | **2. Entorno reproducible** | `requirements.txt` documentado y ejecutable en cualquier máquina con `pip install -r requirements.txt`. | ✅ Cumplido | Entorno `.venv` creado; librerías fijadas en `requirements.txt` |
 | **3. Credenciales protegidas** | El archivo `.env` está en `.gitignore`. Nunca se commitea la API key real. | ✅ Cumplido | `.env` excluido en `.gitignore:7`; validado con `git status` y `git check-ignore` |
 | **4. Consumo exitoso de API** | La petición recibe respuesta HTTP 200 con payload válido del modelo. | ✅ Cumplido | Petición ejecutada con `gemini-3.5-flash`; evidencia guardada en `docs/evidencia_peticion_autenticada.json` |
@@ -139,6 +140,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-014** | 19-10-2026 | U1.2 Bloque 4 | Validación del link y formato de entrega en Skillnest para el Bloque 4. | Se analizó la consigna oficial del Bloque 4 ("pega el enlace de tu repositorio de GitHub como texto en el campo de entrega"). Se confirmó que la pestaña "Enlace" es la correcta y se recomendó usar la URL web canónica `https://github.com/ayalaphysds/Curso-CCHIA` (sin el `.git`) para asegurar que el evaluador acceda directamente a la vista de código en el navegador sin redirecciones. Se verificó el cumplimiento de los 6 criterios de la lista de cotejo. | ✅ Resuelto |
 | **C-015** | 19-10-2026 | U1.3 Bloque 5 | Desarrollo y ejecución completa de las actividades del Bloque 5. | Se implementó el módulo `src/consumir_gemini.py` con principio de responsabilidad única (extracción limpia y `return` del texto), lectura de variables de entorno y llamada HTTP POST con `requests`. Se validó la ejecución e importación del módulo con respuesta real de Gemini API. Se implementó el script de demostración de error de red en `tests/test_conexion.py`. | ✅ Resuelto |
 | **C-016** | 19-10-2026 | U1.3 Bloque 6 | Refactorización del script en funciones reutilizables con responsabilidad única. | Se refactorizó `src/consumir_gemini.py` dividiéndolo en 3 funciones especializadas (`armar_peticion`, `enviar_peticion`, `extraer_texto`) y la coordinadora `obtener_dato_de_prueba`. Se mantuvieron la firma externa y el comportamiento intacto. Se validó cada función individualmente y de punta a punta. Se versionó bajo el commit `"Refactorizar módulo en funciones separadas"`. | ✅ Resuelto |
+| **C-017** | 19-10-2026 | U1.3 Bloque 7 | Incorporación de manejo de excepciones y validación de entradas [Actividad Core]. | Se blindó `src/consumir_gemini.py` con validación temprana de entrada (`ValueError` ante strings vacíos), contención de errores de conexión/timeout (`RuntimeError`), control de formato JSON y datos faltantes (`RuntimeError`). Se desarrolló la suite de pruebas unitarias `tests/test_consumir_gemini.py` ejecutando 6 pruebas con 100% de éxito. Se versionó con el commit `"Incorporar manejo de excepciones y validación al módulo"`, cerrando la Unidad U1.3. | ✅ Resuelto |
 
 ---
 
@@ -149,8 +151,9 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
 | **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ✅ Probado y Generado |
-| **PRG-004** | 19-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.3 Bloque 6 | Módulo refactorizado en funciones reutilizables (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `obtener_dato_de_prueba`) con responsabilidad única estricta. | ✅ Refactorizado y Validado |
+| **PRG-004** | 19-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.3 Bloque 7 | Módulo de integración con Gemini API blindado contra fallos (validación `ValueError`, captura de red/timeout/JSON/datos con `RuntimeError`). Cumple la rúbrica de calidad al 100%. | ✅ Blindado y Validado |
 | **PRG-005** | 19-10-2026 | [`tests/test_conexion.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_conexion.py) | Python | U1.3 Bloque 5 | Script de demostración de error de red inducido a propósito y contención controlada vía `try-except`. | ✅ Probado |
+| **PRG-006** | 19-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.3 Bloque 7 | Suite de pruebas unitarias (`unittest`) con 6 tests automatizados: validación vacía, URL/body, ConnectionError, KeyError/IndexError, mock y live API. | ✅ 6/6 Tests Passing |
 
 ---
 
