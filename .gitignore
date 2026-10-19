@@ -19,3 +19,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Experimentos locales de prueba de entornos
+app_antigua/
+app_moderna/
