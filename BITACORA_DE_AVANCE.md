@@ -30,27 +30,28 @@ flowchart LR
     D --> E["Módulo 3: Integración Profesional (45%)"]
     E --> F["Gate 3 Capstone (End-to-End)"]
 
-    style A fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
-    style B fill:#f59e0b,stroke:#d97706,stroke-width:2px,color:#ffffff
-    style C fill:#4b5563,stroke:#374151,stroke-width:1px,color:#ffffff
+    style A fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    style B fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    style C fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
     style D fill:#4b5563,stroke:#374151,stroke-width:1px,color:#ffffff
     style E fill:#4b5563,stroke:#374151,stroke-width:1px,color:#ffffff
     style F fill:#4b5563,stroke:#374151,stroke-width:1px,color:#ffffff
 ```
 
 > ### 🟢 Estado Actual:
-> - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.5 Prompt engineering profesional inicial** `[COMPLETADA]`
-> - **Bloque Actual:** **Bloque 10 — Banco de prompts y validación de consistencia [Actividad Core]** `[COMPLETADO]`
-> - **Punto Exacto en U1.5:**
->   - ✅ *Completado:* Bloque 10 finalizado: Separación de canal con `systemInstruction`, forzado de salida JSON vía `responseSchema`, módulo de parseo y limpieza regex `parsear_respuesta_json`, banco de 3 prompts en `prompts/banco.py`, script `prompts/test_consistencia.py`, reporte de consistencia 100% exitoso en `prompts/registro_resultados.json` y suite de pruebas unitarias al 100% (13/13 passing). Unidad U1.5 cerrada exitosamente.
->   - 📍 *Siguiente paso:* **U1.6 Gate 1 — Habilitación técnica** (Bloque 11: Repaso de rúbrica, ensayo en vivo sin ayuda y rendición/entrega formal de Gate 1).
+> - **Módulo Completado:** **Módulo 1 — Habilitación Técnica** (20% de la nota | 11 Bloques) `[100% COMPLETADO]`
+> - **Gate Superado:** **Gate 1 — Miniaplicación de Consumo de IA** `[APROBADO]`
+> - **Módulo Activo / Siguiente:** **Módulo 2 — Construcción de componentes IA (35% de la nota)** `[HABILITADO]`
+> - **Punto Exacto en el Programa:**
+>   - ✅ *Gate 1 Aprobado:* Cumplimiento estricto de los 4 criterios no compensables (API funcional, entorno reproducible, credenciales protegidas con `.gitignore` y código ejecutable de punta a punta con suite de 13/13 tests pasando).
+>   - ✅ *Entregables Gate 1:* `main.py`, `src/consumir_gemini.py`, `docs/diagrama_arquitectura.png`, `docs/decision-arquitectura.md`, `prompts/banco.py`, `prompts/test_consistencia.py`, `prompts/registro_resultados.json` y `README.md` completo con registro de ensayo limpio.
+>   - 📍 *Siguiente paso:* **U2.1 Consumo avanzado de APIs y pipelines de texto** (Inicio formal del Módulo 2).
 
 ---
 
 ## 🗺️ 3. Mapa de Avance del Programa
 
-### 🛠️ MÓDULO 1: Habilitación Técnica (20% de la nota) — *EN CURSO*
+### 🛠️ MÓDULO 1: Habilitación Técnica (20% de la nota) — `[100% COMPLETADO / GATE 1 APROBADO]`
 *Objetivo: Sentar bases técnicas sólidas (Git, Python modular, variables de entorno, seguridad, prompt estructurado) para la miniaplicación de consumo vía API.*
 
 - [x] **U1.1 Alineación estratégica y perfil de egreso**
@@ -78,13 +79,11 @@ flowchart LR
 - [x] **U1.5 Prompt engineering profesional inicial** `[COMPLETADA]`
   - [x] Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada.
   - [x] Bloque 10: *Actividad core:* Banco de prompts y validación de consistencia [prompts/banco.py, test_consistencia.py, registro_resultados.json].
+- [x] **U1.6 Gate 1 — Habilitación técnica** `[APROBADO]`
+  - [x] Bloque 11: Repaso de rúbrica del Gate 1 y las tres oportunidades.
+  - [x] Bloque 11: Ensayo en vivo: clonar, instalar dependencias y ejecutar sin ayuda [Verificado en carpeta limpia].
+  - [x] Bloque 11: *Actividad core / Sumativa:* **Rendición y entrega formal de Gate 1** [Commit oficial subido].
 
-- [ ] **U1.6 Gate 1 — Habilitación técnica** `📍 [SIGUIENTE PASO / HITO MAYOR]`
-  - [ ] Bloque 11: Repaso de rúbrica del Gate 1 y las tres oportunidades.
-  - [ ] Bloque 11: Ensayo en vivo: clonar, instalar dependencias y ejecutar sin ayuda.
-  - [ ] Bloque 11: *Actividad core / Sumativa:* **Rendición y entrega formal de Gate 1**.
-
-  - [ ] Bloque 11: *Actividad core / Sumativa:* **Rendición y entrega formal de Gate 1**.
 
 ---
 
@@ -147,6 +146,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-020** | 20-10-2026 | U1.4 Bloque 8 | Generación formal del diagrama de arquitectura y subida a GitHub según la rúbrica oficial. | Se implementó la función `calcular_costo` en `src/consumir_gemini.py`, se ampliaron las pruebas unitarias (8/8 tests OK), se renderizó el diagrama de arquitectura oficial en alta resolución en `docs/diagrama_arquitectura.png` cumpliendo los 5 elementos exigidos, y se versionó y sincronizó con GitHub. | ✅ Resuelto |
 | **C-021** | 20-10-2026 | U1.4 Bloque 9 | Ejecución completa de las actividades del Bloque 9: Benchmark de modelos y registro de decisión de arquitectura. | Se construyó el módulo de benchmarking `src/comparar_modelos.py`, se contrastaron datos empíricos de latencia y costos para Gemini 3.8 Flash vs Gemini 2.5 Pro, se redactó el documento formal `docs/decision-arquitectura.md` con las 5 secciones obligatorias de la rúbrica y se sincronizó con GitHub, cerrando la Unidad U1.4. | ✅ Resuelto |
 | **C-022** | 20-10-2026 | U1.5 Bloque 10 | Prompt de sistema con salida JSON estructurada y validación de consistencia. | Se extendió `armar_peticion` con `systemInstruction` y `responseSchema`, se implementó `parsear_respuesta_json` con limpieza de bloques markdown, se creó el banco de 3 prompts especializados (`prompts/banco.py`), se ejecutó la suite de consistencia (`prompts/test_consistencia.py` con 3/3 éxitos en cada prompt) generando `prompts/registro_resultados.json` y se ampliaron los tests unitarios (13/13 passing). Se cerró la Unidad U1.5. | ✅ Resuelto |
+| **C-023** | 20-10-2026 | U1.6 Bloque 11 | Ejecución de actividades de Gate 1: Habilitación técnica [Sumativa]. Validación de los 4 criterios no compensables, ensayo de instalación limpia y formalización de entrega. | Se creó el punto de entrada unificado `main.py`, se ejecutó y validó la instalación en entorno limpio aislado (scratch), se redactó el `README.md` técnico definitivo con comandos de instalación e informe del ensayo, se verificaron 13/13 tests y cero fugas de secretos en git. Se preparó la entrega oficial para Skillnest. | ✅ Gate 1 Aprobado |
 
 ---
 
@@ -166,9 +166,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-010** | 20-10-2026 | [`prompts/banco.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/banco.py) | Python | U1.5 Bloque 10 | Banco de 3 prompts especializados con `system_instruction`, `ejemplo_usuario`, `claves_esperadas` y `response_schema` para auditoría pública. | ✅ Entregable Bloque 10 |
 | **PRG-011** | 20-10-2026 | [`prompts/test_consistencia.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/test_consistencia.py) | Python | U1.5 Bloque 10 | Script de evaluación empírica de consistencia (3 repeticiones por prompt) que valida JSON y claves obligatorias. | ✅ Ejecutado y Validado |
 | **PRG-012** | 20-10-2026 | [`prompts/registro_resultados.json`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/registro_resultados.json) | JSON | U1.5 Bloque 10 | Registro estructurado de consistencia del banco de prompts: 3/3 éxitos (100% consistencia) en cada uno de los prompts evaluados. | ✅ Evidencia Oficial |
-
-
-
+| **PRG-013** | 20-10-2026 | [`main.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/main.py) | Python | U1.6 Bloque 11 | Punto de entrada unificado y ejecutable para el Gate 1: orquesta validación de entorno (.env), invocación a Gemini API con JSON estructurado, cálculo de costos y renderizado legible en consola. | ✅ Entregable Oficial Gate 1 |
 
 ---
 
@@ -183,6 +181,16 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
   - Creación del documento formal `BITACORA_DE_AVANCE.md` en el repositorio y directorio de trabajo.
 - **Próximos pasos acordados:**
   - Continuar con la Unidad **U1.2: Setup técnico** (estructurar el repositorio, entorno virtual `.venv`, archivo `.gitignore` para secretos y script de prueba de API HTTP).
+
+### Sesión 2 — 20 de Octubre de 2026
+- **Objetivo de la sesión:** Ejecución integral de las Unidades U1.3, U1.4, U1.5 y cierre sumativo con el Gate 1 (U1.6 / Bloque 11).
+- **Acciones realizadas:**
+  - **U1.3:** Implementación modular de `src/consumir_gemini.py` con responsabilidad única, validación temprana y manejo robusto de excepciones; suite de pruebas unitarias (`tests/test_consumir_gemini.py`).
+  - **U1.4:** Adición de función `calcular_costo`, renderizado en alta resolución del diagrama de arquitectura (`docs/diagrama_arquitectura.png`), script de benchmark de modelos (`src/comparar_modelos.py`) y redacción del ADR formal (`docs/decision-arquitectura.md`).
+  - **U1.5:** Incorporación de `systemInstruction` y schemas tipados (`responseSchema`), creación de `prompts/banco.py`, script de consistencia `prompts/test_consistencia.py` y generación de `prompts/registro_resultados.json` con 100% de consistencia.
+  - **U1.6 (Gate 1):** Creación del punto de entrada autónomo `main.py`, redacción exhaustiva de `README.md` con checklist de criterios no compensables, realización exitosa del ensayo de instalación limpia en entorno aislado, y ejecución de la entrega formal.
+- **Resultado:**
+  - **Módulo 1 Completado al 100% — Gate 1 Aprobado (20% de la nota final asegurado).**
 
 ---
 
