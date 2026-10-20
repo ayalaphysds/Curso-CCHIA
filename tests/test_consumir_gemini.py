@@ -10,8 +10,10 @@ from src.consumir_gemini import (
     enviar_peticion,
     extraer_texto,
     calcular_costo,
+    parsear_respuesta_json,
     obtener_dato_de_prueba,
 )
+
 
 
 class TestConsumirGemini(unittest.TestCase):
@@ -91,9 +93,52 @@ class TestConsumirGemini(unittest.TestCase):
             # Contención controlada ante fallos transitorios de red, sobrecarga (503) o error de respuesta del proveedor
             self.assertTrue(any(term in str(e).lower() for term in ["servicio", "conectar", "red", "texto", "respuesta"]))
 
+    def test_armar_peticion_con_system_y_schema(self):
+        """Verifica que armar_peticion incluya systemInstruction y generationConfig correctamente."""
+        schema = {
+            "type": "OBJECT",
+            "properties": {"resultado": {"type": "STRING"}},
+            "required": ["resultado"]
+        }
+        url, body = armar_peticion(
+            "Analizar",
+            system_instruction="Eres un auditor estricto.",
+            response_schema=schema
+        )
+        self.assertIn("systemInstruction", body)
+        self.assertEqual(body["systemInstruction"]["parts"][0]["text"], "Eres un auditor estricto.")
+        self.assertIn("generationConfig", body)
+        self.assertEqual(body["generationConfig"]["responseMimeType"], "application/json")
+        self.assertEqual(body["generationConfig"]["responseSchema"], schema)
 
+    def test_parsear_respuesta_json_valido(self):
+        """Verifica el parseo directo de un JSON limpio con claves requeridas."""
+        texto = '{"categoria": "farmaco", "confianza": 0.95}'
+        datos = parsear_respuesta_json(texto, claves_requeridas=["categoria", "confianza"])
+        self.assertEqual(datos["categoria"], "farmaco")
+        self.assertEqual(datos["confianza"], 0.95)
 
+    def test_parsear_respuesta_json_con_markdown(self):
+        """Verifica la remoción de bloques de código markdown ```json ... ```."""
+        texto_md = "```json\n{\n  \"status\": \"OK\",\n  \"score\": 100\n}\n```"
+        datos = parsear_respuesta_json(texto_md, claves_requeridas=["status", "score"])
+        self.assertEqual(datos["status"], "OK")
+        self.assertEqual(datos["score"], 100)
+
+    def test_parsear_respuesta_json_invalido(self):
+        """Verifica que lance ValueError si el texto no es JSON válido."""
+        with self.assertRaises(ValueError) as ctx:
+            parsear_respuesta_json("No soy un JSON")
+        self.assertIn("no es JSON válido", str(ctx.exception))
+
+    def test_parsear_respuesta_json_claves_faltantes(self):
+        """Verifica que lance ValueError si faltan las claves esperadas."""
+        texto = '{"categoria": "insumo"}'
+        with self.assertRaises(ValueError) as ctx:
+            parsear_respuesta_json(texto, claves_requeridas=["categoria", "precio"])
+        self.assertIn("faltan las claves", str(ctx.exception))
 
 
 if __name__ == "__main__":
     unittest.main()
+

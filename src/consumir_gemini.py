@@ -12,6 +12,8 @@ Rúbrica de Calidad de Código:
 
 import os
 import sys
+import json
+import re
 import requests
 from dotenv import load_dotenv
 
@@ -23,9 +25,14 @@ if hasattr(sys.stdout, "reconfigure"):
 load_dotenv()
 
 
-def armar_peticion(pregunta: str) -> tuple[str, dict]:
+def armar_peticion(
+    pregunta: str,
+    system_instruction: str = None,
+    response_schema: dict = None
+) -> tuple[str, dict]:
     """
     Valida la entrada, lee las credenciales y prepara la URL y el cuerpo de la petición.
+    Permite opcionalmente systemInstruction y responseSchema (generationConfig).
     
     Responsabilidad única: Validación temprana y preparación de parámetros.
     Lanza:
@@ -46,7 +53,19 @@ def armar_peticion(pregunta: str) -> tuple[str, dict]:
         ]
     }
 
+    if system_instruction:
+        body["systemInstruction"] = {
+            "parts": [{"text": system_instruction.strip()}]
+        }
+
+    if response_schema is not None:
+        body["generationConfig"] = {
+            "responseMimeType": "application/json",
+            "responseSchema": response_schema
+        }
+
     return url, body
+
 
 
 def enviar_peticion(url: str, body: dict, headers: dict = None) -> dict:
@@ -101,6 +120,39 @@ def calcular_costo(datos: dict, precio_entrada: float, precio_salida: float) -> 
         return (tokens_entrada * precio_entrada) + (tokens_salida * precio_salida)
     except (KeyError, TypeError):
         raise RuntimeError("La respuesta no contiene los metadatos de uso ('usageMetadata') esperados.")
+
+
+def parsear_respuesta_json(texto: str, claves_requeridas: list = None) -> dict:
+    """
+    Limpia bloques de código markdown y deserializa el texto a un diccionario Python.
+    Valida opcionalmente que contenga las claves requeridas.
+    
+    Responsabilidad única: Limpieza, deserialización y validación estructural del JSON.
+    Lanza:
+        ValueError: Si el texto no es JSON válido o si faltan las claves requeridas.
+    """
+    if not texto or not isinstance(texto, str):
+        raise ValueError("El texto a parsear no puede estar vacío.")
+
+    texto_limpio = texto.strip()
+    texto_limpio = re.sub(r"^```(?:json)?\s*", "", texto_limpio)
+    texto_limpio = re.sub(r"\s*```$", "", texto_limpio)
+
+    try:
+        datos = json.loads(texto_limpio)
+    except json.JSONDecodeError:
+        raise ValueError("La respuesta del modelo no es JSON válido.")
+
+    if not isinstance(datos, dict):
+        raise ValueError("La respuesta del modelo no es un objeto JSON.")
+
+    if claves_requeridas:
+        faltantes = [clave for clave in claves_requeridas if clave not in datos]
+        if faltantes:
+            raise ValueError(f"La respuesta no tiene la estructura esperada: faltan las claves {faltantes}.")
+
+    return datos
+
 
 
 

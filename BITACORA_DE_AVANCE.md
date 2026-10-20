@@ -40,12 +40,11 @@ flowchart LR
 
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[COMPLETADA]`
-> - **Bloque Actual:** **Bloque 9 — Documenta tu decisión de arquitectura en el repositorio [Actividad Core]** `[COMPLETADO]`
-> - **Punto Exacto en U1.4:**
->   - ✅ *Completado:* Bloque 8 finalizado: Implementación de `calcular_costo`, suite de pruebas (8/8 passing) y generación del diagrama de arquitectura oficial en `docs/diagrama_arquitectura.png`.
->   - ✅ *Completado:* Bloque 9 finalizado: Benchmark empírico comparativo entre modelos candidatos (`src/comparar_modelos.py`) y redacción del registro formal de decisión de arquitectura en `docs/decision-arquitectura.md` (cumpliendo al 100% las 5 secciones de la rúbrica). Unidad U1.4 cerrada exitosamente.
->   - 📍 *Siguiente paso:* **U1.5 Prompt engineering profesional inicial** (Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada).
+> - **Unidad Actual:** **U1.5 Prompt engineering profesional inicial** `[COMPLETADA]`
+> - **Bloque Actual:** **Bloque 10 — Banco de prompts y validación de consistencia [Actividad Core]** `[COMPLETADO]`
+> - **Punto Exacto en U1.5:**
+>   - ✅ *Completado:* Bloque 10 finalizado: Separación de canal con `systemInstruction`, forzado de salida JSON vía `responseSchema`, módulo de parseo y limpieza regex `parsear_respuesta_json`, banco de 3 prompts en `prompts/banco.py`, script `prompts/test_consistencia.py`, reporte de consistencia 100% exitoso en `prompts/registro_resultados.json` y suite de pruebas unitarias al 100% (13/13 passing). Unidad U1.5 cerrada exitosamente.
+>   - 📍 *Siguiente paso:* **U1.6 Gate 1 — Habilitación técnica** (Bloque 11: Repaso de rúbrica, ensayo en vivo sin ayuda y rendición/entrega formal de Gate 1).
 
 ---
 
@@ -76,14 +75,15 @@ flowchart LR
   - [x] Bloque 8: *Actividad práctica:* Diagrama la arquitectura de tu miniaplicación [Generado en docs/ y commiteado].
   - [x] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala).
   - [x] Bloque 9: *Actividad core:* Documentación de la decisión de arquitectura en el repositorio [docs/decision-arquitectura.md].
+- [x] **U1.5 Prompt engineering profesional inicial** `[COMPLETADA]`
+  - [x] Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada.
+  - [x] Bloque 10: *Actividad core:* Banco de prompts y validación de consistencia [prompts/banco.py, test_consistencia.py, registro_resultados.json].
 
-- [ ] **U1.5 Prompt engineering profesional inicial** `📍 [SIGUIENTE PASO]`
-  - [ ] Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada.
-  - [ ] Bloque 10: *Actividad core:* Banco de prompts y validación de consistencia.
-
-- [ ] **U1.6 Gate 1 — Habilitación técnica**
+- [ ] **U1.6 Gate 1 — Habilitación técnica** `📍 [SIGUIENTE PASO / HITO MAYOR]`
   - [ ] Bloque 11: Repaso de rúbrica del Gate 1 y las tres oportunidades.
   - [ ] Bloque 11: Ensayo en vivo: clonar, instalar dependencias y ejecutar sin ayuda.
+  - [ ] Bloque 11: *Actividad core / Sumativa:* **Rendición y entrega formal de Gate 1**.
+
   - [ ] Bloque 11: *Actividad core / Sumativa:* **Rendición y entrega formal de Gate 1**.
 
 ---
@@ -146,6 +146,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-019** | 20-10-2026 | Portafolio / Capstone | Evaluación y feedback estratégico del proyecto personal `cenabast-procurement-optimization`. | Se analizó el repositorio completo: excelente formulación matemática/OR (solver HiGHS, HHI, ahorro de $24.000M CLP, Streamlit), pero carece aún de IA Generativa. Se diseñó la hoja de ruta para potenciarlo como el Capstone final del curso (Gate 2 con RAG y Function Calling, Gate 3 con FastAPI y Docker). | ✅ Resuelto |
 | **C-020** | 20-10-2026 | U1.4 Bloque 8 | Generación formal del diagrama de arquitectura y subida a GitHub según la rúbrica oficial. | Se implementó la función `calcular_costo` en `src/consumir_gemini.py`, se ampliaron las pruebas unitarias (8/8 tests OK), se renderizó el diagrama de arquitectura oficial en alta resolución en `docs/diagrama_arquitectura.png` cumpliendo los 5 elementos exigidos, y se versionó y sincronizó con GitHub. | ✅ Resuelto |
 | **C-021** | 20-10-2026 | U1.4 Bloque 9 | Ejecución completa de las actividades del Bloque 9: Benchmark de modelos y registro de decisión de arquitectura. | Se construyó el módulo de benchmarking `src/comparar_modelos.py`, se contrastaron datos empíricos de latencia y costos para Gemini 3.8 Flash vs Gemini 2.5 Pro, se redactó el documento formal `docs/decision-arquitectura.md` con las 5 secciones obligatorias de la rúbrica y se sincronizó con GitHub, cerrando la Unidad U1.4. | ✅ Resuelto |
+| **C-022** | 20-10-2026 | U1.5 Bloque 10 | Prompt de sistema con salida JSON estructurada y validación de consistencia. | Se extendió `armar_peticion` con `systemInstruction` y `responseSchema`, se implementó `parsear_respuesta_json` con limpieza de bloques markdown, se creó el banco de 3 prompts especializados (`prompts/banco.py`), se ejecutó la suite de consistencia (`prompts/test_consistencia.py` con 3/3 éxitos en cada prompt) generando `prompts/registro_resultados.json` y se ampliaron los tests unitarios (13/13 passing). Se cerró la Unidad U1.5. | ✅ Resuelto |
 
 ---
 
@@ -156,12 +157,16 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
 | **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ✅ Probado y Generado |
-| **PRG-004** | 20-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.4 Bloque 8 | Módulo de integración con Gemini API. Incluye validación de entrada, captura de errores de red/timeout/JSON, extracción de texto y cálculo financiero en vivo con `calcular_costo(datos, p_in, p_out)`. | ✅ Actualizado Bloque 8 |
+| **PRG-004** | 20-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.5 Bloque 10 | Módulo central de integración con Gemini API: soporte para `systemInstruction`, forzado de salida estructurada `responseSchema` en `generationConfig`, `calcular_costo` y deserialización robusta con `parsear_respuesta_json`. | ✅ Actualizado Bloque 10 |
 | **PRG-005** | 19-10-2026 | [`tests/test_conexion.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_conexion.py) | Python | U1.3 Bloque 5 | Script de demostración de error de red inducido a propósito y contención controlada vía `try-except`. | ✅ Probado |
-| **PRG-006** | 20-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.4 Bloque 8 | Suite de pruebas unitarias (`unittest`) con 8 tests automatizados: validaciones, URL/body, red/timeout, extracción y cálculo de costo por tokens. | ✅ 8/8 Tests Passing |
+| **PRG-006** | 20-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.5 Bloque 10 | Suite de pruebas unitarias (`unittest`) con 13 tests automatizados: validaciones tempranas, URLs, errores de red/timeout/JSON, extracción, cálculo de costo, esquemas estructurados y parseo. | ✅ 13/13 Tests Passing |
 | **PRG-007** | 20-10-2026 | [`docs/diagrama_arquitectura.png`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/docs/diagrama_arquitectura.png) | Imagen PNG | U1.4 Bloque 8 | Diagrama oficial de arquitectura de la miniaplicación cumpliendo los 5 criterios exigidos en la rúbrica (funciones reales, `.env`, `try/except`, `usageMetadata` y flechas tipadas). | ✅ Generado y Commiteado |
 | **PRG-008** | 20-10-2026 | [`src/comparar_modelos.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/comparar_modelos.py) | Python | U1.4 Bloque 9 | Módulo de benchmark comparativo entre modelos candidatos (Gemini Flash vs Pro): medición de latencia empírica, cálculo de costo por token y proyección a escala. | ✅ Probado |
 | **PRG-009** | 20-10-2026 | [`docs/decision-arquitectura.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/docs/decision-arquitectura.md) | Markdown | U1.4 Bloque 9 | Registro formal de decisión de arquitectura (ADR) que documenta el modelo elegido, diagrama vinculado, tabla comparativa con datos reales, justificación y razones de descarte. | ✅ Entregable Oficial |
+| **PRG-010** | 20-10-2026 | [`prompts/banco.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/banco.py) | Python | U1.5 Bloque 10 | Banco de 3 prompts especializados con `system_instruction`, `ejemplo_usuario`, `claves_esperadas` y `response_schema` para auditoría pública. | ✅ Entregable Bloque 10 |
+| **PRG-011** | 20-10-2026 | [`prompts/test_consistencia.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/test_consistencia.py) | Python | U1.5 Bloque 10 | Script de evaluación empírica de consistencia (3 repeticiones por prompt) que valida JSON y claves obligatorias. | ✅ Ejecutado y Validado |
+| **PRG-012** | 20-10-2026 | [`prompts/registro_resultados.json`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/registro_resultados.json) | JSON | U1.5 Bloque 10 | Registro estructurado de consistencia del banco de prompts: 3/3 éxitos (100% consistencia) en cada uno de los prompts evaluados. | ✅ Evidencia Oficial |
+
 
 
 
