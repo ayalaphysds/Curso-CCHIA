@@ -35,7 +35,7 @@ def armar_peticion(pregunta: str) -> tuple[str, dict]:
         raise ValueError("La pregunta no puede estar vacía")
 
     api_key = os.getenv("GEMINI_API_KEY")
-    modelo = "gemini-3.5-flash"
+    modelo = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={api_key}"
 
     body = {
@@ -84,6 +84,24 @@ def extraer_texto(datos: dict) -> str:
         return datos["candidates"][0]["content"]["parts"][0]["text"]
     except (KeyError, IndexError, TypeError):
         raise RuntimeError("La respuesta no trae el texto generado en el lugar esperado.")
+
+
+def calcular_costo(datos: dict, precio_entrada: float, precio_salida: float) -> float:
+    """
+    Calcula el costo monetario real (USD) de una petición a partir del bloque 'usageMetadata'.
+    
+    Responsabilidad única: Cálculo de costo a partir del conteo de tokens.
+    Lanza:
+        RuntimeError: Si la respuesta no contiene 'usageMetadata' o la estructura esperada.
+    """
+    try:
+        uso = datos["usageMetadata"]
+        tokens_entrada = uso["promptTokenCount"]
+        tokens_salida = uso["candidatesTokenCount"]
+        return (tokens_entrada * precio_entrada) + (tokens_salida * precio_salida)
+    except (KeyError, TypeError):
+        raise RuntimeError("La respuesta no contiene los metadatos de uso ('usageMetadata') esperados.")
+
 
 
 def obtener_dato_de_prueba(pregunta: str) -> str:

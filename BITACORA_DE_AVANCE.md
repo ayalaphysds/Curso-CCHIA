@@ -40,13 +40,11 @@ flowchart LR
 
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.3 Python aplicado para integración con IA** `[COMPLETADA]`
-> - **Bloque Actual:** **Bloque 7 — Manejo de excepciones y validación de entradas [Actividad Core]** `[COMPLETADO]`
-> - **Punto Exacto en U1.3:**
->   - ✅ *Completado:* Bloque 5 finalizado: Primer módulo funcional de consumo de servicios externos.
->   - ✅ *Completado:* Bloque 6 finalizado: Refactorización en funciones reutilizables con principio de responsabilidad única.
->   - ✅ *Completado:* Bloque 7 finalizado: Validación temprana (`ValueError`), contención de errores de conexión/timeout/JSON/datos faltantes (`RuntimeError`), y suite `tests/test_consumir_gemini.py` (6/6 tests passing). Unidad U1.3 cerrada y lista para entrega en Skillnest.
->   - 📍 *Siguiente paso:* **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** (Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo).
+> - **Unidad Actual:** **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[EN CURSO]`
+> - **Bloque Actual:** **Bloque 8 — Tokens, costos y diagrama de arquitectura [Actividad Práctica]** `[COMPLETADO]`
+> - **Punto Exacto en U1.4:**
+>   - ✅ *Completado:* Bloque 8 finalizado: Implementación de `calcular_costo(datos, p_in, p_out)` para cómputo de tokens en vivo (`usageMetadata`), suite de pruebas (8/8 passing) y generación del diagrama de arquitectura oficial en `docs/diagrama_arquitectura.png`.
+>   - 📍 *Siguiente paso:* **Bloque 9 — Comparación de modelos y su costo por request** (Criterios de costo, latencia, escala y documentación de decisión de arquitectura).
 
 ---
 
@@ -72,11 +70,12 @@ flowchart LR
   - [x] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo.
   - [x] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código.
   - [x] Bloque 7: *Actividad core:* Incorpora excepciones, validación y commit de avance.
-- [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `📍 [SIGUIENTE PASO]`
-  - [ ] Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo.
-  - [ ] Bloque 8: *Actividad práctica:* Diagrama la arquitectura de tu miniaplicación.
-  - [ ] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala).
+- [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[EN CURSO]`
+  - [x] Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo.
+  - [x] Bloque 8: *Actividad práctica:* Diagrama la arquitectura de tu miniaplicación [Generado en docs/ y commiteado].
+  - [ ] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala). `📍 [SIGUIENTE PASO]`
   - [ ] Bloque 9: *Actividad core:* Documentación de la decisión de arquitectura en el repositorio.
+
 - [ ] **U1.5 Prompt engineering profesional inicial**
   - [ ] Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada.
   - [ ] Bloque 10: *Actividad core:* Banco de prompts y validación de consistencia.
@@ -141,6 +140,9 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-015** | 19-10-2026 | U1.3 Bloque 5 | Desarrollo y ejecución completa de las actividades del Bloque 5. | Se implementó el módulo `src/consumir_gemini.py` con principio de responsabilidad única (extracción limpia y `return` del texto), lectura de variables de entorno y llamada HTTP POST con `requests`. Se validó la ejecución e importación del módulo con respuesta real de Gemini API. Se implementó el script de demostración de error de red en `tests/test_conexion.py`. | ✅ Resuelto |
 | **C-016** | 19-10-2026 | U1.3 Bloque 6 | Refactorización del script en funciones reutilizables con responsabilidad única. | Se refactorizó `src/consumir_gemini.py` dividiéndolo en 3 funciones especializadas (`armar_peticion`, `enviar_peticion`, `extraer_texto`) y la coordinadora `obtener_dato_de_prueba`. Se mantuvieron la firma externa y el comportamiento intacto. Se validó cada función individualmente y de punta a punta. Se versionó bajo el commit `"Refactorizar módulo en funciones separadas"`. | ✅ Resuelto |
 | **C-017** | 19-10-2026 | U1.3 Bloque 7 | Incorporación de manejo de excepciones y validación de entradas [Actividad Core]. | Se blindó `src/consumir_gemini.py` con validación temprana de entrada (`ValueError` ante strings vacíos), contención de errores de conexión/timeout (`RuntimeError`), control de formato JSON y datos faltantes (`RuntimeError`). Se desarrolló la suite de pruebas unitarias `tests/test_consumir_gemini.py` ejecutando 6 pruebas con 100% de éxito. Se versionó con el commit `"Incorporar manejo de excepciones y validación al módulo"`, cerrando la Unidad U1.3. | ✅ Resuelto |
+| **C-018** | 20-10-2026 | U1.4 Bloque 8 | Consulta: ¿En el Bloque 8 debo diagramar la app que quiero crear o un diagrama genérico? | Se clarificó la rúbrica oficial: no debe ser un diagrama genérico ni tampoco inventar una app futura compleja. Debe reflejar el módulo real construido en Python (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `calcular_costo`, `.env` y `try/except`). | ✅ Resuelto |
+| **C-019** | 20-10-2026 | Portafolio / Capstone | Evaluación y feedback estratégico del proyecto personal `cenabast-procurement-optimization`. | Se analizó el repositorio completo: excelente formulación matemática/OR (solver HiGHS, HHI, ahorro de $24.000M CLP, Streamlit), pero carece aún de IA Generativa. Se diseñó la hoja de ruta para potenciarlo como el Capstone final del curso (Gate 2 con RAG y Function Calling, Gate 3 con FastAPI y Docker). | ✅ Resuelto |
+| **C-020** | 20-10-2026 | U1.4 Bloque 8 | Generación formal del diagrama de arquitectura y subida a GitHub según la rúbrica oficial. | Se implementó la función `calcular_costo` en `src/consumir_gemini.py`, se ampliaron las pruebas unitarias (8/8 tests OK), se renderizó el diagrama de arquitectura oficial en alta resolución en `docs/diagrama_arquitectura.png` cumpliendo los 5 elementos exigidos, y se versionó y sincronizó con GitHub. | ✅ Resuelto |
 
 ---
 
@@ -151,9 +153,11 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-001** | 19-10-2026 | [`BITACORA_DE_AVANCE.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/BITACORA_DE_AVANCE.md) | Markdown | General | Registro vivo del progreso del curso, consultas, programas generados y rúbricas. | ✅ Activo |
 | **PRG-002** | 19-10-2026 | [`src/verificar_entorno.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/verificar_entorno.py) | Python | U1.2 Bloque 3 | Diagnóstico de entorno Python, verificación de aislamiento de `.venv` y comprobación de librerías instaladas. | ✅ Probado |
 | **PRG-003** | 19-10-2026 | [`src/probar_conexion_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/probar_conexion_api.py) | Python | U1.2 Bloque 4 | Petición HTTP autenticada a Gemini API vía `requests`, comprobación de status 200 y generación de evidencia en `docs/`. | ✅ Probado y Generado |
-| **PRG-004** | 19-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.3 Bloque 7 | Módulo de integración con Gemini API blindado contra fallos (validación `ValueError`, captura de red/timeout/JSON/datos con `RuntimeError`). Cumple la rúbrica de calidad al 100%. | ✅ Blindado y Validado |
+| **PRG-004** | 20-10-2026 | [`src/consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/consumir_gemini.py) | Python | U1.4 Bloque 8 | Módulo de integración con Gemini API. Incluye validación de entrada, captura de errores de red/timeout/JSON, extracción de texto y cálculo financiero en vivo con `calcular_costo(datos, p_in, p_out)`. | ✅ Actualizado Bloque 8 |
 | **PRG-005** | 19-10-2026 | [`tests/test_conexion.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_conexion.py) | Python | U1.3 Bloque 5 | Script de demostración de error de red inducido a propósito y contención controlada vía `try-except`. | ✅ Probado |
-| **PRG-006** | 19-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.3 Bloque 7 | Suite de pruebas unitarias (`unittest`) con 6 tests automatizados: validación vacía, URL/body, ConnectionError, KeyError/IndexError, mock y live API. | ✅ 6/6 Tests Passing |
+| **PRG-006** | 20-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.4 Bloque 8 | Suite de pruebas unitarias (`unittest`) con 8 tests automatizados: validaciones, URL/body, red/timeout, extracción y cálculo de costo por tokens. | ✅ 8/8 Tests Passing |
+| **PRG-007** | 20-10-2026 | [`docs/diagrama_arquitectura.png`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/docs/diagrama_arquitectura.png) | Imagen PNG | U1.4 Bloque 8 | Diagrama oficial de arquitectura de la miniaplicación cumpliendo los 5 criterios exigidos en la rúbrica (funciones reales, `.env`, `try/except`, `usageMetadata` y flechas tipadas). | ✅ Generado y Commiteado |
+
 
 ---
 
