@@ -1,0 +1,38 @@
+{
+  "auditar_sobreprecio_farmaco": {
+    "exitos": 3,
+    "intentos": 3,
+    "tasa_consistencia_pct": 100.0,
+    "claves_esperadas": [
+      "sobreprecio_detectado",
+      "desviacion_porcentual",
+      "recomendacion",
+      "justificacion_corta"
+    ],
+    "estado": "CONSISTENTE"
+  },
+  "evaluar_riesgo_proveedor": {
+    "exitos": 3,
+    "intentos": 3,
+    "tasa_consistencia_pct": 100.0,
+    "claves_esperadas": [
+      "nivel_riesgo",
+      "score_confiabilidad",
+      "cuota_maxima_sugerida",
+      "motivo_principal"
+    ],
+    "estado": "CONSISTENTE"
+  },
+  "resumen_ejecutivo_licitacion": {
+    "exitos": 3,
+    "intentos": 3,
+    "tasa_consistencia_pct": 100.0,
+    "claves_esperadas": [
+      "id_licitacion",
+      "ahorro_potencial_estimado_clp",
+      "requiere_intervencion_urgente",
+      "dictamen_ejecutivo"
+    ],
+    "estado": "CONSISTENTE"
+  }
+}
