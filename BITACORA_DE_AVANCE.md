@@ -40,11 +40,12 @@ flowchart LR
 
 > ### 🟢 Estado Actual:
 > - **Módulo Activo:** **Módulo 1 — Habilitación Técnica** (Peso: 20% | 46 horas | 11 Bloques)
-> - **Unidad Actual:** **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[EN CURSO]`
-> - **Bloque Actual:** **Bloque 8 — Tokens, costos y diagrama de arquitectura [Actividad Práctica]** `[COMPLETADO]`
+> - **Unidad Actual:** **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[COMPLETADA]`
+> - **Bloque Actual:** **Bloque 9 — Documenta tu decisión de arquitectura en el repositorio [Actividad Core]** `[COMPLETADO]`
 > - **Punto Exacto en U1.4:**
->   - ✅ *Completado:* Bloque 8 finalizado: Implementación de `calcular_costo(datos, p_in, p_out)` para cómputo de tokens en vivo (`usageMetadata`), suite de pruebas (8/8 passing) y generación del diagrama de arquitectura oficial en `docs/diagrama_arquitectura.png`.
->   - 📍 *Siguiente paso:* **Bloque 9 — Comparación de modelos y su costo por request** (Criterios de costo, latencia, escala y documentación de decisión de arquitectura).
+>   - ✅ *Completado:* Bloque 8 finalizado: Implementación de `calcular_costo`, suite de pruebas (8/8 passing) y generación del diagrama de arquitectura oficial en `docs/diagrama_arquitectura.png`.
+>   - ✅ *Completado:* Bloque 9 finalizado: Benchmark empírico comparativo entre modelos candidatos (`src/comparar_modelos.py`) y redacción del registro formal de decisión de arquitectura en `docs/decision-arquitectura.md` (cumpliendo al 100% las 5 secciones de la rúbrica). Unidad U1.4 cerrada exitosamente.
+>   - 📍 *Siguiente paso:* **U1.5 Prompt engineering profesional inicial** (Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada).
 
 ---
 
@@ -70,15 +71,16 @@ flowchart LR
   - [x] Bloque 6: Refactorización a funciones modulares y reutilizables en el repo.
   - [x] Bloque 7: Excepciones (`try-except`), validación de entradas y rúbrica de calidad de código.
   - [x] Bloque 7: *Actividad core:* Incorpora excepciones, validación y commit de avance.
-- [ ] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[EN CURSO]`
+- [x] **U1.4 Fundamentos de IA generativa y arquitectura de aplicaciones** `[COMPLETADA]`
   - [x] Bloque 8: Tokens, ciclo request-response y cálculo de costos en vivo.
   - [x] Bloque 8: *Actividad práctica:* Diagrama la arquitectura de tu miniaplicación [Generado en docs/ y commiteado].
-  - [ ] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala). `📍 [SIGUIENTE PASO]`
-  - [ ] Bloque 9: *Actividad core:* Documentación de la decisión de arquitectura en el repositorio.
+  - [x] Bloque 9: Criterios para elegir entre modelos candidatos (costo, latencia, escala).
+  - [x] Bloque 9: *Actividad core:* Documentación de la decisión de arquitectura en el repositorio [docs/decision-arquitectura.md].
 
-- [ ] **U1.5 Prompt engineering profesional inicial**
+- [ ] **U1.5 Prompt engineering profesional inicial** `📍 [SIGUIENTE PASO]`
   - [ ] Bloque 10: Prompts de sistema vs conversación y forzado de salida JSON estructurada.
   - [ ] Bloque 10: *Actividad core:* Banco de prompts y validación de consistencia.
+
 - [ ] **U1.6 Gate 1 — Habilitación técnica**
   - [ ] Bloque 11: Repaso de rúbrica del Gate 1 y las tres oportunidades.
   - [ ] Bloque 11: Ensayo en vivo: clonar, instalar dependencias y ejecutar sin ayuda.
@@ -143,6 +145,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-018** | 20-10-2026 | U1.4 Bloque 8 | Consulta: ¿En el Bloque 8 debo diagramar la app que quiero crear o un diagrama genérico? | Se clarificó la rúbrica oficial: no debe ser un diagrama genérico ni tampoco inventar una app futura compleja. Debe reflejar el módulo real construido en Python (`armar_peticion`, `enviar_peticion`, `extraer_texto`, `calcular_costo`, `.env` y `try/except`). | ✅ Resuelto |
 | **C-019** | 20-10-2026 | Portafolio / Capstone | Evaluación y feedback estratégico del proyecto personal `cenabast-procurement-optimization`. | Se analizó el repositorio completo: excelente formulación matemática/OR (solver HiGHS, HHI, ahorro de $24.000M CLP, Streamlit), pero carece aún de IA Generativa. Se diseñó la hoja de ruta para potenciarlo como el Capstone final del curso (Gate 2 con RAG y Function Calling, Gate 3 con FastAPI y Docker). | ✅ Resuelto |
 | **C-020** | 20-10-2026 | U1.4 Bloque 8 | Generación formal del diagrama de arquitectura y subida a GitHub según la rúbrica oficial. | Se implementó la función `calcular_costo` en `src/consumir_gemini.py`, se ampliaron las pruebas unitarias (8/8 tests OK), se renderizó el diagrama de arquitectura oficial en alta resolución en `docs/diagrama_arquitectura.png` cumpliendo los 5 elementos exigidos, y se versionó y sincronizó con GitHub. | ✅ Resuelto |
+| **C-021** | 20-10-2026 | U1.4 Bloque 9 | Ejecución completa de las actividades del Bloque 9: Benchmark de modelos y registro de decisión de arquitectura. | Se construyó el módulo de benchmarking `src/comparar_modelos.py`, se contrastaron datos empíricos de latencia y costos para Gemini 3.8 Flash vs Gemini 2.5 Pro, se redactó el documento formal `docs/decision-arquitectura.md` con las 5 secciones obligatorias de la rúbrica y se sincronizó con GitHub, cerrando la Unidad U1.4. | ✅ Resuelto |
 
 ---
 
@@ -157,6 +160,9 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-005** | 19-10-2026 | [`tests/test_conexion.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_conexion.py) | Python | U1.3 Bloque 5 | Script de demostración de error de red inducido a propósito y contención controlada vía `try-except`. | ✅ Probado |
 | **PRG-006** | 20-10-2026 | [`tests/test_consumir_gemini.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/tests/test_consumir_gemini.py) | Python | U1.4 Bloque 8 | Suite de pruebas unitarias (`unittest`) con 8 tests automatizados: validaciones, URL/body, red/timeout, extracción y cálculo de costo por tokens. | ✅ 8/8 Tests Passing |
 | **PRG-007** | 20-10-2026 | [`docs/diagrama_arquitectura.png`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/docs/diagrama_arquitectura.png) | Imagen PNG | U1.4 Bloque 8 | Diagrama oficial de arquitectura de la miniaplicación cumpliendo los 5 criterios exigidos en la rúbrica (funciones reales, `.env`, `try/except`, `usageMetadata` y flechas tipadas). | ✅ Generado y Commiteado |
+| **PRG-008** | 20-10-2026 | [`src/comparar_modelos.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/src/comparar_modelos.py) | Python | U1.4 Bloque 9 | Módulo de benchmark comparativo entre modelos candidatos (Gemini Flash vs Pro): medición de latencia empírica, cálculo de costo por token y proyección a escala. | ✅ Probado |
+| **PRG-009** | 20-10-2026 | [`docs/decision-arquitectura.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/docs/decision-arquitectura.md) | Markdown | U1.4 Bloque 9 | Registro formal de decisión de arquitectura (ADR) que documenta el modelo elegido, diagrama vinculado, tabla comparativa con datos reales, justificación y razones de descarte. | ✅ Entregable Oficial |
+
 
 
 ---
