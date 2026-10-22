@@ -16,7 +16,7 @@
 | **Proveedor LLM Recomendado** | Google Gemini API (o proveedor alternativo) |
 | **Entorno de Ejecución** | Windows / PowerShell / VS Code / Python 3.12+ |
 | **Fecha de Inicio** | Octubre 2026 |
-| **Última Actualización** | 19 de Octubre de 2026 |
+| **Última Actualización** | 22 de Octubre de 2026 |
 
 ---
 
@@ -39,13 +39,13 @@ flowchart LR
 ```
 
 > ### 🟢 Estado Actual:
-> - **Módulo Completado:** **Módulo 1 — Habilitación Técnica** (20% de la nota | 11 Bloques) `[100% COMPLETADO]`
-> - **Gate Superado:** **Gate 1 — Miniaplicación de Consumo de IA** `[APROBADO]`
-> - **Módulo Activo / Siguiente:** **Módulo 2 — Construcción de componentes IA (35% de la nota)** `[HABILITADO]`
+> - **Módulo Completado:** **Módulo 1 — Habilitación Técnica** (20% de la nota | 11 Bloques) `[100% COMPLETADO / GATE 1 APROBADO]`
+> - **Módulo Activo:** **Módulo 2 — Construcción de componentes IA (35% de la nota)** `[EN PROGRESO]`
+> - **Unidad Activa:** **U2.1 Consumo avanzado de APIs de IA generativa**
 > - **Punto Exacto en el Programa:**
->   - ✅ *Gate 1 Aprobado:* Cumplimiento estricto de los 4 criterios no compensables (API funcional, entorno reproducible, credenciales protegidas con `.gitignore` y código ejecutable de punta a punta con suite de 13/13 tests pasando).
->   - ✅ *Entregables Gate 1:* `main.py`, `src/consumir_gemini.py`, `docs/diagrama_arquitectura.png`, `docs/decision-arquitectura.md`, `prompts/banco.py`, `prompts/test_consistencia.py`, `prompts/registro_resultados.json` y `README.md` completo con registro de ensayo limpio.
->   - 📍 *Siguiente paso:* **U2.1 Consumo avanzado de APIs y pipelines de texto** (Inicio formal del Módulo 2).
+>   - ✅ *Bloque 12 Completado:* Cliente modular de consumo con reintentos y clasificación de excepciones (`cliente_api.py`, `cliente_reintento.py`, `cliente.py`). Verificación exitosa de los 4 escenarios de la rúbrica (consulta normal, credencial inválida inmediata, reintento ante 429 y agotamiento de intentos con RuntimeError).
+>   - ✅ *Compatibilidad Gate 1:* Preservada al 100% (13/13 pruebas unitarias de regresión superadas).
+>   - 📍 *Siguiente paso:* **Bloque 13: Rate limits, backoff y registro de costo por operación** (Estrategia de backoff exponencial y acumulador de costos).
 
 ---
 
@@ -87,12 +87,20 @@ flowchart LR
 
 ---
 
-### 🤖 MÓDULO 2: Construcción de componentes IA (35% de la nota) — *PENDIENTE*
-- [ ] U2.1 Consumo avanzado de APIs y pipelines de texto
-- [ ] U2.2 Orquestación con LangChain y modelos de lenguaje
-- [ ] U2.3 Agentes inteligentes con herramientas (Tools & Function Calling)
-- [ ] U2.4 RAG (Retrieval-Augmented Generation) y bases de datos vectoriales
-- [ ] U2.5 Personalización y fine-tuning / observabilidad y seguridad
+### 🤖 MÓDULO 2: Construcción de componentes IA (35% de la nota) — `[EN PROGRESO]`
+- [ ] **U2.1 Consumo avanzado de APIs de IA generativa**
+  - [x] Bloque 12: *Cliente modular de consumo de APIs, con reintentos*
+    - [x] Lección 1: Un cliente que aguanta: autenticación y rate limits (clasificación de errores 401/403 vs 429/500/red).
+    - [x] Lección 2: Reintento ante error del proveedor, construido en vivo (`con_reintento` con política de reintentos).
+    - [x] Lección 3: *Actividad práctica:* Desarrolla tu cliente modular de consumo de modelos [`cliente.py` entregado y verificado].
+  - [ ] Bloque 13: Rate limits, backoff y registro de costo por operación.
+  - [ ] Bloque 14: Pruebas unitarias sobre el cliente modular (`test_cliente.py`).
+- [ ] U2.2 Pipeline de texto, NLP básico y evaluación inicial
+- [ ] U2.3 LangChain y orquestación de flujos
+- [ ] U2.4 Agentes, herramientas externas y memoria
+- [ ] U2.5 RAG y bases de datos vectoriales
+- [ ] U2.6 Personalización de modelos RAG, fine-tuning y soft-prompting
+- [ ] U2.7 Observabilidad, seguridad y gobernanza técnica
 - [ ] **Gate 2: Integración y orquestación de servicios IA (Entrega modular completa)**
 
 ---
@@ -147,6 +155,7 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **C-021** | 20-10-2026 | U1.4 Bloque 9 | Ejecución completa de las actividades del Bloque 9: Benchmark de modelos y registro de decisión de arquitectura. | Se construyó el módulo de benchmarking `src/comparar_modelos.py`, se contrastaron datos empíricos de latencia y costos para Gemini 3.8 Flash vs Gemini 2.5 Pro, se redactó el documento formal `docs/decision-arquitectura.md` con las 5 secciones obligatorias de la rúbrica y se sincronizó con GitHub, cerrando la Unidad U1.4. | ✅ Resuelto |
 | **C-022** | 20-10-2026 | U1.5 Bloque 10 | Prompt de sistema con salida JSON estructurada y validación de consistencia. | Se extendió `armar_peticion` con `systemInstruction` y `responseSchema`, se implementó `parsear_respuesta_json` con limpieza de bloques markdown, se creó el banco de 3 prompts especializados (`prompts/banco.py`), se ejecutó la suite de consistencia (`prompts/test_consistencia.py` con 3/3 éxitos en cada prompt) generando `prompts/registro_resultados.json` y se ampliaron los tests unitarios (13/13 passing). Se cerró la Unidad U1.5. | ✅ Resuelto |
 | **C-023** | 20-10-2026 | U1.6 Bloque 11 | Ejecución de actividades de Gate 1: Habilitación técnica [Sumativa]. Validación de los 4 criterios no compensables, ensayo de instalación limpia y formalización de entrega. | Se creó el punto de entrada unificado `main.py`, se ejecutó y validó la instalación en entorno limpio aislado (scratch), se redactó el `README.md` técnico definitivo con comandos de instalación e informe del ensayo, se verificaron 13/13 tests y cero fugas de secretos en git. Se preparó la entrega oficial para Skillnest. | ✅ Gate 1 Aprobado |
+| **C-024** | 22-10-2026 | U2.1 Bloque 12 | Implementación y verificación del cliente modular con reintentos y clasificación estricta de errores [Actividad Práctica]. | Se construyeron `cliente_api.py`, `cliente_reintento.py` y el módulo integrador `cliente.py` con `consultar_modelo()`. Se implementó la clasificación de excepciones (ValueError para auth, TimeoutError para rate limits/red), reintento transparente con `con_reintento()` y encapsulación del agotamiento de intentos en `RuntimeError`. Se verificaron empíricamente los 4 escenarios de la rúbrica (consulta normal, credencial inválida, reintento ante 429 simulado y agotamiento) y se validó la compatibilidad con el Gate 1 (13/13 tests pasando). | ✅ Resuelto |
 
 ---
 
@@ -167,6 +176,9 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
 | **PRG-011** | 20-10-2026 | [`prompts/test_consistencia.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/test_consistencia.py) | Python | U1.5 Bloque 10 | Script de evaluación empírica de consistencia (3 repeticiones por prompt) que valida JSON y claves obligatorias. | ✅ Ejecutado y Validado |
 | **PRG-012** | 20-10-2026 | [`prompts/registro_resultados.json`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/prompts/registro_resultados.json) | JSON | U1.5 Bloque 10 | Registro estructurado de consistencia del banco de prompts: 3/3 éxitos (100% consistencia) en cada uno de los prompts evaluados. | ✅ Evidencia Oficial |
 | **PRG-013** | 20-10-2026 | [`main.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/main.py) | Python | U1.6 Bloque 11 | Punto de entrada unificado y ejecutable para el Gate 1: orquesta validación de entorno (.env), invocación a Gemini API con JSON estructurado, cálculo de costos y renderizado legible en consola. | ✅ Entregable Oficial Gate 1 |
+| **PRG-014** | 22-10-2026 | [`cliente_api.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/cliente_api.py) | Python | U2.1 Bloque 12 | Módulo de cliente HTTP para Gemini API con clasificación estricta de errores por código de estado (401/403/400 -> ValueError, 429/500/red -> TimeoutError) y armado de payload. | ✅ Probado |
+| **PRG-015** | 22-10-2026 | [`cliente_reintento.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/cliente_reintento.py) | Python | U2.1 Bloque 12 | Función de orden superior `con_reintento()` que intercepta TimeoutError, ejecuta pausas parametrizadas y respeta límites de reintento sin ocultar errores de autenticación. | ✅ Probado |
+| **PRG-016** | 22-10-2026 | [`cliente.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/cliente.py) | Python | U2.1 Bloque 12 | Cliente modular unificado con función pública `consultar_modelo()`: orquesta armado de payload, reintento transparente, traducción de fallas a RuntimeError y suite de verificación con 4 escenarios. | ✅ Entregable Bloque 12 |
 
 ---
 
@@ -191,6 +203,18 @@ Para aprobar el **Gate 1** (y acceder a la calificación mínima de 80% y optar 
   - **U1.6 (Gate 1):** Creación del punto de entrada autónomo `main.py`, redacción exhaustiva de `README.md` con checklist de criterios no compensables, realización exitosa del ensayo de instalación limpia en entorno aislado, y ejecución de la entrega formal.
 - **Resultado:**
   - **Módulo 1 Completado al 100% — Gate 1 Aprobado (20% de la nota final asegurado).**
+
+### Sesión 3 — 22 de Octubre de 2026
+- **Objetivo de la sesión:** Inicio del Módulo 2 y desarrollo integral del **Bloque 12 (Cliente modular de consumo de APIs, con reintentos)**.
+- **Acciones realizadas:**
+  - Inspección del material curricular y requerimientos de la Unidad U2.1.
+  - Implementación de `cliente_api.py`: separación de errores de autenticación (401/403/400 inválido -> `ValueError`) de errores transitorios de red/proveedor (429/500/timeout -> `TimeoutError`).
+  - Implementación de `cliente_reintento.py`: función genérica `con_reintento()` para reintento automático con pausas configurables.
+  - Creación del cliente modular integrador `cliente.py`: interfaz unificada `consultar_modelo()` con manejo de agotamiento de intentos convertido a `RuntimeError`.
+  - Ejecución de la batería de pruebas en consola validando los 4 escenarios de la rúbrica oficial (consulta normal con Gemini 3.5 Flash, API key inválida inmediata, reintento ante 429 simulado y agotamiento).
+  - Verificación de no regresión en la suite de pruebas del Gate 1 (13/13 tests pasando).
+- **Resultado:**
+  - **Bloque 12 completado al 100% y listo para versionamiento formal.**
 
 ---
 
