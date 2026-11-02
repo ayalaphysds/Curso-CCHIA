@@ -38,6 +38,38 @@ from cliente_api import (
 from cliente_reintento import con_reintento
 
 
+costo_total_sesion: float = 0.0
+
+
+def reiniciar_costo() -> None:
+    """Restablece el acumulador de costo de la sesión a 0.0."""
+    global costo_total_sesion
+    costo_total_sesion = 0.0
+
+
+def registrar_costo(respuesta: dict, costo_por_token: float = 0.000001) -> float:
+    """
+    Registra el costo de una llamada calculando los tokens en usageMetadata o campos equivalentes.
+    Actualiza el acumulador global de sesión y devuelve el costo de la operación actual.
+    """
+    global costo_total_sesion
+    tokens = 0
+    if isinstance(respuesta, dict):
+        usage = respuesta.get("usageMetadata", {})
+        if isinstance(usage, dict):
+            tokens = usage.get("totalTokenCount", 0)
+        if not tokens and "tokens" in respuesta:
+            tokens = respuesta.get("tokens", 0)
+    costo_op = float(tokens) * costo_por_token
+    costo_total_sesion += costo_op
+    return costo_op
+
+
+def obtener_costo_total() -> float:
+    """Retorna el costo acumulado de la sesión actual."""
+    return costo_total_sesion
+
+
 def consultar_modelo(
     pregunta: str,
     system_instruction: str = "",
@@ -48,15 +80,17 @@ def consultar_modelo(
     Flujo:
     1. Valida y arma el cuerpo de la petición.
     2. Envía la petición aplicando la política de reintentos (con_reintento).
-    3. Convierte el agotamiento de reintentos (TimeoutError) en un RuntimeError para el consumidor.
-    4. Permite que ValueError (credencial inválida o error de configuración) se propague tal cual.
-    5. Extrae y devuelve el texto procesado.
+    3. Registra el costo de tokens de la respuesta en la sesión.
+    4. Convierte el agotamiento de reintentos (TimeoutError) en un RuntimeError para el consumidor.
+    5. Permite que ValueError (credencial inválida o error de configuración) se propague tal cual.
+    6. Extrae y devuelve el texto procesado.
     """
     cuerpo = armar_peticion(pregunta, system_instruction)
     try:
         respuesta = con_reintento(lambda: enviar_peticion(cuerpo))
     except TimeoutError:
         raise RuntimeError("El servicio no respondió tras varios intentos. Intenta más tarde.")
+    registrar_costo(respuesta)
     return extraer_texto(respuesta)
 
 

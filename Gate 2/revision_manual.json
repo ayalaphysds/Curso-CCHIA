@@ -1,0 +1,82 @@
+[
+  {
+    "id_caso": 1,
+    "f1_lexico": 0.7727,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Respuesta plenamente correcta. Cita con precisión la mediana de 22.40 CLP y la vigencia del catálogo 2026."
+  },
+  {
+    "id_caso": 2,
+    "f1_lexico": 0.5106,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "F1 alto (0.64) con concordancia factual total. Dictamina rechazo por sobreprecio crítico del 50.0%."
+  },
+  {
+    "id_caso": 4,
+    "f1_lexico": 0.64,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Excelente respuesta contextual. Explica por qué el 3.2% cae dentro del umbral competitivo aceptable (<= 5%)."
+  },
+  {
+    "id_caso": 6,
+    "f1_lexico": 0.4583,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Respuesta correcta. Identifica el tramo de negociación obligatoria (5% a 15%) ante desviación de 9.19%."
+  },
+  {
+    "id_caso": 8,
+    "f1_lexico": 0.4783,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Identifica correctamente sobreprecio del 18.42% e interrupción de adjudicación para supervisión humana."
+  },
+  {
+    "id_caso": 10,
+    "f1_lexico": 0.5106,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Califica con precisión la oferta temeraria (-44.4%) y el riesgo de insolvencia de la planta farmacéutica."
+  },
+  {
+    "id_caso": 11,
+    "f1_lexico": 0.359,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Comprende la restricción anti-monopolio del 45% máximo de cuota de suministro anual."
+  },
+  {
+    "id_caso": 12,
+    "f1_lexico": 0.5098,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Menciona con exactitud la tasa diaria del 1.0% y el tope del 15.0% de multa contractual."
+  },
+  {
+    "id_caso": 15,
+    "f1_lexico": 0.5333,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Detalla el rechazo del 100% del embarque por quiebre de cadena de frío y el plazo perentorio de 48h."
+  },
+  {
+    "id_caso": 18,
+    "f1_lexico": 0.4286,
+    "correccion_factual": true,
+    "completitud": true,
+    "contradiccion": false,
+    "notas_auditoria": "Confirma la política estricta de prohibición de adjudicación autónoma por IA cuando el sobreprecio excede el 15%."
+  }
+]

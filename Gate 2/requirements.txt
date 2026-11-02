@@ -1,0 +1,13 @@
+# Dependencias oficiales para Gate 2 - Integración y Orquestación (CENABAST)
+# Especialización en IA Accenture - Curso CCHIA
+
+langchain-core>=1.6.3
+langchain-chroma>=1.1.0
+langgraph>=1.2.11
+chromadb>=1.5.9
+python-dotenv>=1.2.2
+pytest>=9.0.0
+numpy>=1.22.5
+requests>=2.31.0
+pydantic>=2.0.0
+langchain-text-splitters>=1.1.0

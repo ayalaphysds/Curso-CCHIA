@@ -23,3 +23,10 @@ Thumbs.db
 # Experimentos locales de prueba de entornos
 app_antigua/
 app_moderna/
+
+# Índices vectoriales y artefactos binarios locales
+indice_gate2/
+vectorstore/
+*.npy
+*.sqlite3
+.pytest_cache/
