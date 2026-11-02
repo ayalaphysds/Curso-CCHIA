@@ -12,13 +12,24 @@ Punto de entrada general para ejecutar y verificar la miniaplicación de punta a
 
 import os
 import sys
+from pathlib import Path
 from dotenv import load_dotenv
 
 # Asegurar codificación UTF-8 en consola de Windows
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-load_dotenv()
+# Asegurar que el directorio de Gate 1 esté en sys.path para importación modular de src
+GATE1_DIR = Path(__file__).resolve().parent
+if str(GATE1_DIR) not in sys.path:
+    sys.path.insert(0, str(GATE1_DIR))
+
+# Cargar variables de entorno buscando en Gate 1/.env o en el directorio superior
+env_gate1 = GATE1_DIR / ".env"
+if env_gate1.exists():
+    load_dotenv(dotenv_path=env_gate1)
+else:
+    load_dotenv()
 
 from src.consumir_gemini import (
     armar_peticion,

@@ -4,7 +4,14 @@ Especialización en IA Accenture - Curso CCHIA
 Unidad U1.3 · Bloque 7: Rúbrica de Calidad y Manejo de Errores
 """
 
+import sys
+from pathlib import Path
 import unittest
+
+GATE1_DIR = Path(__file__).resolve().parent.parent
+if str(GATE1_DIR) not in sys.path:
+    sys.path.insert(0, str(GATE1_DIR))
+
 from src.consumir_gemini import (
     armar_peticion,
     enviar_peticion,
