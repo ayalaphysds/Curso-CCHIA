@@ -1,0 +1,7 @@
+# Limitaciones conocidas
+
+| ID | Qué no hace | Origen | Riesgo | Efecto | Decisión |
+|---|---|---|---|---|---|
+| LIM-01 | No bloquea en la capa de entrada inyecciones indirectas redactadas como escenarios hipotéticos sin palabras clave de override | ataques:A-07 | R-02 | La consulta supera el filtro regex inicial, aunque la capa 4 de fundamentación impide fabricar precios y el sistema nunca ejecuta adjudicaciones | Se acepta para el MVP determinista; la revisión humana es obligatoria y en fase futura se evaluará un clasificador semántico dedicado |
+| LIM-02 | No recupera documentos cuando la consulta se formula en inglés o usa sinónimos coloquiales ausentes del glosario oficial CENABAST | matriz_modelo:MP-08, transferencia:T-05, transferencia:T-06 | R-09 | Devuelve abstención segura (`SIN_INFORMACION`) con lista de fuentes vacía en lugar de recuperar el precio del principio activo equivalente | Se documenta el uso de principios activos en español según catálogo ISP y se fija prueba de regresión hasta habilitar embeddings multilingües |
+| LIM-03 | El verificador determinista de fundamentación no detecta atribuciones cruzadas entre cifras reales del mismo fragmento ni omisiones sutiles de requisitos sanitarios | alucinaciones:H-04, alucinaciones:H-05 | R-01 | Una respuesta del LLM que intercambie el techo del rango por la mediana u omita bioequivalencia ISP puede pasar el chequeo léxico-numérico | Se mitiga exigiendo revisión humana del auditor CENABAST sobre toda minuta de licitación y se planifica un verificador NLI en fase productiva |

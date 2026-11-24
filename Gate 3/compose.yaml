@@ -1,0 +1,27 @@
+name: cenabast-auditoria-ia
+
+services:
+  api:
+    build: .
+    image: cenabast-auditoria/api:1.0
+    ports:
+      - "8000:8000"
+    environment:
+      ENTORNO: ${ENTORNO:-desarrollo}
+      MODELO: ${MODELO:-simulado}
+      PERMITIR_RESPALDO: ${PERMITIR_RESPALDO:-0}
+      UMBRAL_SOBREPRECIO_PCT: ${UMBRAL_SOBREPRECIO_PCT:-15.0}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    restart: unless-stopped
+
+  interfaz:
+    build: ./interfaz
+    image: cenabast-auditoria/interfaz:1.0
+    ports:
+      - "8080:8000"
+    environment:
+      API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

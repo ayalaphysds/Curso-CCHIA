@@ -4,7 +4,8 @@
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Gate 1: Habilitación Técnica](https://img.shields.io/badge/Gate%201-Completado-success.svg)](Gate%201/README.md)
-[![Gate 2: Componentes IA & RAG](https://img.shields.io/badge/Gate%202-En%20Desarrollo-orange.svg)](Gate%202/README.md)
+[![Gate 2: Componentes IA & RAG](https://img.shields.io/badge/Gate%202-Completado-success.svg)](Gate%202/README.md)
+[![Gate 3: Capstone End-to-End](https://img.shields.io/badge/Gate%203-Completado-success.svg)](Gate%203/README.md)
 
 > **Repositorio Oficial de Entregables y Actividades Prácticas**  
 > **Estudiante:** Sebastián Eduardo Ayala Vásquez (`sayala7` / `ayalaphysds`)  
@@ -53,12 +54,22 @@ Curso-CCHIA/
 │       ├── test_conexion.py
 │       └── test_consumir_gemini.py
 │
-└── Gate 2/                          # ── HITO 2: CONSTRUCCIÓN DE COMPONENTES IA & RAG ──
-    ├── .env.example                 # Variables de entorno para Gate 2
-    ├── cliente.py                   # Cliente modular con política de reintento (Bloque 12)
-    ├── cliente_api.py               # Capa de transporte HTTP y clasificación de errores (Bloque 12)
-    ├── cliente_reintento.py         # Mecanismo de reintentos ante fallas transitorias (Bloque 12)
-    └── [Actividades Core & RAG]     # Módulos de indexación, seguridad, observabilidad y supervisión
+├── Gate 2/                          # ── HITO 2: CONSTRUCCIÓN DE COMPONENTES IA & RAG ──
+│   ├── README.md                    # Documentación técnica y rúbrica de Gate 2 (98.8%)
+│   ├── servicio_rag.py              # Servicio modular RAG CENABAST + supervisión LangGraph
+│   ├── GUIA_DE_ENTREGAS_MODULO_2.md # Guía de entregas para Actividades Core Módulo 2
+│   └── [Actividades Core & Tests]   # 106 pruebas aprobadas (Bloques 12 a 32 + Gate 2)
+│
+└── Gate 3/                          # ── HITO 3: CAPSTONE END-TO-END (FASTAPI + DOCKER + QA) ──
+    ├── README.md                    # Documentación técnica verificada (8/8)
+    ├── GUIA_DE_ENTREGAS_MODULO_3.md # Guía y enlaces directos para Skillnest (Bloques 34 a S2)
+    ├── Dockerfile / compose.yaml    # Empaquetado no-root y composición API + Interfaz Web
+    ├── servicio/                    # API FastAPI en 3 capas + cadena RAG 4 capas + seguridad
+    ├── interfaz/                    # Gateway web desacoplado (puerto 8080 -> http://api:8000)
+    ├── data/                        # Corpus oficial CENABAST 2026 (5 documentos Markdown)
+    ├── docs/                        # Ficha funcional, matrices, ADRs, defensa, plan B y gate3.md
+    ├── tests/                       # 83 pruebas automatizadas (API, parciales, seguridad y Gate 3)
+    └── verificar_gate3.py           # Verificador maestro (22 fuentes y rúbrica oficial)
 ```
 
 ---
@@ -128,7 +139,13 @@ Para consultar la especificación completa, diagramas y el **Contrato Formal de 
 
 ### Gate 2: Componentes IA y Pipeline RAG
 Para consultar el desarrollo de las actividades core del Módulo 2 y la solución modular RAG para CENABAST:
-- [Ver documentación de Gate 2](Gate%202/README.md) *(en desarrollo)*.
+- [Ver documentación de Gate 2](Gate%202/README.md) *(Completado — 98.8% rúbrica, 106/106 tests)*.
+
+### Gate 3: Capstone End-to-End (Integración Profesional)
+Para consultar la aplicación FastAPI + Docker Compose + QA adversarial + documentación y defensa técnica:
+- [Ver documentación técnica de Gate 3](Gate%203/README.md)
+- [Guía de entregas y enlaces directos Módulo 3](Gate%203/GUIA_DE_ENTREGAS_MODULO_3.md)
+- [Informe automatizado de rúbrica Gate 3](Gate%203/docs/gate3.md)
 
 ---
 

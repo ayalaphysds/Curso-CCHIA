@@ -16,7 +16,7 @@
 | **Proveedor LLM Recomendado** | Google Gemini API (o proveedor alternativo) |
 | **Entorno de Ejecución** | Windows / PowerShell / VS Code / Python 3.12+ |
 | **Fecha de Inicio** | Octubre 2026 |
-| **Última Actualización** | 2 de Noviembre de 2026 |
+| **Última Actualización** | 24 de Noviembre de 2026 |
 
 ---
 
@@ -34,19 +34,19 @@ flowchart LR
     style B fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
     style C fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
     style D fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
-    style E fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#ffffff
-    style F fill:#4b5563,stroke:#374151,stroke-width:1px,color:#ffffff
+    style E fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
+    style F fill:#10b981,stroke:#059669,stroke-width:2px,color:#ffffff
 ```
 
 > ### 🟢 Estado Actual:
-> - **Módulo Completado 1:** **Módulo 1 — Habilitación Técnica** (20% de la nota | 11 Bloques) `[100% COMPLETADO / GATE 1 APROBADO]`
-> - **Módulo Completado 2:** **Módulo 2 — Construcción de componentes IA** (35% de la nota | 21 Bloques) `[100% COMPLETADO / GATE 2 APROBADO]` (98.8% autoevaluación rúbrica, 4/4 criterios no compensables cumplidos, 106 tests aprobados en Gate 2).
-> - **Módulo Activo:** **Módulo 3 — Integración profesional (45% de la nota)** `[PENDIENTE / LISTO PARA INICIAR]`
+> - **Módulo Completado 1:** **Módulo 1 — Habilitación Técnica** (20% de la nota | 11 Bloques) `[100% COMPLETADO / GATE 1 APROBADO — 7.0/7.0]`
+> - **Módulo Completado 2:** **Módulo 2 — Construcción de componentes IA** (35% de la nota | 21 Bloques) `[100% COMPLETADO / GATE 2 APROBADO]` (98.8% rúbrica, 106 tests aprobados).
+> - **Módulo Completado 3:** **Módulo 3 — Integración profesional** (45% de la nota | 7 Unidades, Bloques 33 a S2) `[100% COMPLETADO / GATE 3 CAPSTONE IMPLEMENTADO]` (83 tests automatizados en verde, 19/19 fuentes locales de `verificar_gate3.py` en 100%, listo para corrida final `--con-docker` y defensa en vivo).
 > - **Punto Exacto en el Programa:**
->   - ✅ *Gate 1 Aprobado y Documentado:* Contrato JSON formal en `Gate 1/README.md`, modelo Pydantic v2 y 13/13 tests de regresión superados.
->   - ✅ *Módulo 2 Completado:* 8 actividades core resueltas (Bloques 12 a 32) y documentadas en `Gate 2/GUIA_DE_ENTREGAS_MODULO_2.md`.
->   - ✅ *Gate 2 Aprobado:* Servicio RAG CENABAST modular (`Gate 2/servicio_rag.py`), filtro de inyección, observabilidad estructurada sin PII, supervisión humana LangGraph y 106 tests unitarios/adversarios superados con 98.8% en rúbrica.
->   - 📍 *Siguiente paso:* Inicio de la Unidad **U3.1 Diseño funcional y arquitectura del proyecto final** (Módulo 3 / Capstone).
+>   - ✅ *Gate 1 Aprobado (7.0/7.0):* Contrato JSON formal en `Gate 1/README.md` y 13/13 tests pasando.
+>   - ✅ *Gate 2 Completado:* Servicio RAG CENABAST modular (`Gate 2/servicio_rag.py`) y 106/106 tests pasando.
+>   - ✅ *Módulo 3 y Gate 3 Capstone Completados:* Aplicación end-to-end FastAPI + Interfaz Web + Docker Compose + QA/Seguridad/Alucinaciones + ADRs/Transferencia + Guion de defensa de 8 min, Plan B de demo y verificador maestro en `Gate 3/`.
+>   - 📍 *Siguiente paso:* Subida de los enlaces directos en Skillnest (`Gate 3/GUIA_DE_ENTREGAS_MODULO_3.md`), presentación de diapositivas y defensa técnica en vivo.
 
 ---
 
@@ -129,13 +129,14 @@ flowchart LR
 
 ---
 
-### 🚀 MÓDULO 3: Integración profesional (45% de la nota) — *PENDIENTE*
-- [ ] U3.1 Diseño funcional y arquitectura del proyecto final
-- [ ] U3.2 Exposición de servicios con FastAPI
-- [ ] U3.3 Contenerización con Docker
-- [ ] U3.4 Integración end-to-end, QA y matrices de prueba/riesgos
-- [ ] U3.5 Despliegue, documentación técnica y demo ejecutiva
-- [ ] **Gate 3: Capstone Project — Aplicación IA End-to-End para Producción**
+### 🚀 MÓDULO 3: Integración profesional (45% de la nota) — `[100% COMPLETADO / GATE 3 LISTO]`
+- [x] **U3.1 Diseño funcional del proyecto según perfil de salida** (`Gate 3/docs/ficha_diseno_funcional.md`, `Gate 3/docs/diagrama_arquitectura.png`, `Gate 3/docs/revision_alcance.md`, `Gate 3/verificar_ficha_completa.py` — 5/5)
+- [x] **U3.2 FastAPI para exposición de servicios** (`Gate 3/servicio/`, `Gate 3/casos.py`, `Gate 3/cliente_externo.py`, `Gate 3/docs/registro_pruebas.md`, `Gate 3/tests/test_api.py` — 12/12)
+- [x] **U3.3 Docker y despliegue controlado** (`Gate 3/Dockerfile`, `Gate 3/interfaz/`, `Gate 3/compose.yaml`, `Gate 3/buscar_secretos.py`, `Gate 3/verificar_dockerfile.py` 7/7, `Gate 3/verificar_entrega.py` 7/7)
+- [x] **U3.4 Integración end-to-end de la solución generativa** (`Gate 3/docs/pruebas_parciales.md`, `Gate 3/escenarios.py` 14/14, `Gate 3/docs/bitacora_ajustes.md`, `Gate 3/docs/registro_ejecucion.md`, `Gate 3/verificar_registro.py` 6/6)
+- [x] **U3.5 QA, seguridad y validación de la solución** (`Gate 3/docs/matriz_pruebas.md` 6/6, `Gate 3/docs/registro_alucinaciones.md`, `Gate 3/verificar_mitigaciones.py` 17/17, `Gate 3/docs/matriz_riesgos.md` 6/6)
+- [x] **U3.6 Documentación técnica y transferencia** (`Gate 3/README.md` 8/8, `Gate 3/docs/api.md` 6/6, `Gate 3/docs/transferencia.md` 5/5, `Gate 3/docs/decisiones.md`, `Gate 3/docs/limitaciones.md`, `Gate 3/verificar_decisiones.py` 7/7, `Gate 3/probar_en_frio.py` 5/5)
+- [x] **U3.7 Gate 3: Capstone Project — Aplicación IA End-to-End para Producción** (`Gate 3/docs/defensa.md`, `Gate 3/medir_guion.py` 9/9, `Gate 3/ensayo_demo.py` 8/8, `Gate 3/docs/demo_respaldo.md`, `Gate 3/rubrica_gate3.py`, `Gate 3/verificar_gate3.py`, `Gate 3/docs/gate3.md`, `Gate 3/GUIA_DE_ENTREGAS_MODULO_3.md`)
 
 ---
 
@@ -230,6 +231,14 @@ Para aprobar el **Gate 2** (calificación mínima 80% en rúbrica ponderada y pa
 | **PRG-024** | 02-11-2026 | [`Gate 2/src/cliente_rag.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%202/src/cliente_rag.py) | Python | Gate 2 | Cliente de integración LLM y mock semántico de alta fidelidad para ejecución determinista y reproducible sin claves externas. | ✅ Probado |
 | **PRG-025** | 02-11-2026 | [`Gate 2/test_gate2.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%202/test_gate2.py) | Python | Gate 2 | Suite oficial de validación de los 4 criterios no compensables de la rúbrica oficial de Gate 2 (13 tests oficiales pasando). | ✅ Probado |
 | **PRG-026** | 02-11-2026 | [`Gate 2/rubrica_gate2.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%202/rubrica_gate2.py) | Python | Gate 2 | Evaluador automático y cuantitativo ponderado de las 6 dimensiones de la rúbrica oficial (98.8% de nota final y veredicto APROBADO). | ✅ Probado |
+| **PRG-027** | 24-11-2026 | [`Gate 3/docs/ficha_diseno_funcional.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/docs/ficha_diseno_funcional.md) | Markdown | U3.1 Bloque 34 | Ficha de diseño funcional completa (5 secciones, 6 RF, 3 RNF, 8 CA, 5 hitos y revisión cruzada) verificada con `verificar_ficha_completa.py` (5/5). | ✅ Entregable Core B34 |
+| **PRG-028** | 24-11-2026 | [`Gate 3/servicio/main.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/servicio/main.py) | Python / FastAPI | U3.2 Bloque 36 | API FastAPI en 3 capas (`/salud`, `/consultas`, `/precios/evaluar`, `/licitaciones/{id}`), contrato uniforme de errores y 12/12 casos en `docs/registro_pruebas.md`. | ✅ Entregable Core B36 |
+| **PRG-029** | 24-11-2026 | [`Gate 3/compose.yaml`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/compose.yaml) | Docker / YAML | U3.3 Bloque 38 | Composición de 2 servicios (`api` :8000 e `interfaz` :8080), Dockerfiles no-root con `HEALTHCHECK` (7/7), higiene de secretos y verificación cruzada (7/7). | ✅ Entregable Core B38 |
+| **PRG-030** | 24-11-2026 | [`Gate 3/docs/registro_ejecucion.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/docs/registro_ejecucion.md) | Markdown / Python | U3.4 Bloque 41 | Pruebas parciales aisladas (5/5), 14 escenarios E2E repetibles (5/5), bitácora de ajustes y registro auditable validado con `verificar_registro.py` (6/6). | ✅ Entregable Core B41 |
+| **PRG-031** | 24-11-2026 | [`Gate 3/docs/matriz_riesgos.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/docs/matriz_riesgos.md) | Markdown / Python | U3.5 Bloque 43 | Matriz de Pruebas (6/6), detector de alucinaciones en salida, 17/17 mitigaciones de seguridad y Matriz de 9 Riesgos con evidencia ejecutable (6/6). | ✅ Entregable Core B43 |
+| **PRG-032** | 24-11-2026 | [`Gate 3/docs/decisiones.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/docs/decisiones.md) | Markdown / Python | U3.6 Bloque 45 | 6 ADRs vigentes (`D-01..D-06`), 3 limitaciones trazadas (`LIM-01..LIM-03`), `docs/api.md`, prueba de transferencia (5/5), README verificado (8/8) y prueba en frío (5/5). | ✅ Entregable Core B45 |
+| **PRG-033** | 24-11-2026 | [`Gate 3/verificar_gate3.py`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/verificar_gate3.py) | Python | U3.7 Gate 3 | Verificador maestro del Capstone (22 fuentes, rúbrica 100 pts, 4 no compensables), ensayo en vivo (`ensayo_demo.py` 8/8), guion (`medir_guion.py` 9/9) y `docs/gate3.md`. | ✅ Entregable Gate 3 |
+| **PRG-034** | 24-11-2026 | [`Gate 3/GUIA_DE_ENTREGAS_MODULO_3.md`](file:///c:/Users/sayal/OneDrive/Desktop/Curso%20CCHIA/Curso-CCHIA/Gate%203/GUIA_DE_ENTREGAS_MODULO_3.md) | Markdown | Módulo 3 | Guía maestra con enlaces directos de GitHub y comandos de verificación para cada actividad Core del Módulo 3 y Gate 3 en Skillnest. | ✅ Entregable Oficial |
 
 ---
 
@@ -289,6 +298,19 @@ Para aprobar el **Gate 2** (calificación mínima 80% en rúbrica ponderada y pa
     - Ejecución de suites completas: 106 tests aprobados en Gate 2, 13 tests en Gate 1, y autoevaluación oficial de rúbrica en 98.8% (Aprobado en Oportunidad 1).
 - **Resultado:**
   - **Módulo 2 Completado al 100% — Gate 2 Aprobado (55% acumulado de la nota final: 20% M1 + 35% M2). Todo el repositorio listo y verificado para abordar el Módulo 3 (Capstone Project).**
+
+### Sesión 5 — 24 de Noviembre de 2026
+- **Objetivo de la sesión:** Limpieza y normalización de nombres de los 50 PDFs de `Material de Estudio/Módulo 3` (resolviendo desbordamiento `MAX_PATH` en Windows y erratas de Skillnest), desarrollo completo de las 6 actividades Core del Módulo 3 (Bloques 34, 36, 38, 41, 43 y 45) y construcción del **Gate 3 Capstone** aplicado a la plataforma end-to-end de auditoría de precios CENABAST.
+- **Acciones realizadas:**
+  - **U3.1 (Bloques 33–34 Core):** Ficha de diseño funcional completa (`docs/ficha_diseno_funcional.md`), diagrama de arquitectura (`docs/diagrama_arquitectura.png`), revisión cruzada (`docs/revision_alcance.md`) y verificador `verificar_ficha_completa.py` (5/5).
+  - **U3.2 (Bloques 35–36 Core):** Servicio FastAPI de 3 capas (`servicio/main.py`, `esquemas.py`, `errores.py`, `logica.py`), 12 casos válidos/inválidos en `casos.py` ejecutados en `pytest` y vía cliente HTTP externo (`docs/registro_pruebas.md` 12/12).
+  - **U3.3 (Bloques 37–38 Core):** Contenerización no-root con `HEALTHCHECK` para API e Interfaz Web (`Dockerfile`, `interfaz/Dockerfile`, `compose.yaml`), auditoría de secretos (`buscar_secretos.py`), verificación cruzada (`docs/verificacion_cruzada.md`) y `verificar_entrega.py` (7/7).
+  - **U3.4 (Bloques 39–41 Core):** 6 suites de pruebas parciales aisladas (`verificar_parciales.py` 5/5 + mutación en `verificar_defectos.py`), 14 escenarios E2E repetibles sobre API + Interfaz (`verificar_ejecucion.py` 5/5), bitácora de ajustes (`docs/bitacora_ajustes.md`) y registro auditable (`docs/registro_ejecucion.md`, `verificar_registro.py` 6/6).
+  - **U3.5 (Bloques 42–43 Core):** Matriz de Pruebas trazada a la ficha (`verificar_matriz.py` 6/6), detector de alucinaciones en salida (`servicio/fundamentacion.py`), 17/17 mitigaciones de ataques/alucinaciones/fugas (`verificar_mitigaciones.py`) y Matriz de 9 Riesgos con evidencia ejecutable (`verificar_riesgos.py` 6/6).
+  - **U3.6 (Bloques 44–45 Core):** `README.md` técnico verificado (8/8), prueba en frío sobre clon limpio (`probar_en_frio.py` 5/5), referencia viva `docs/api.md` (6/6), prueba cruzada de transferencia (`docs/transferencia.md` 5/5), 6 ADRs (`docs/decisiones.md`) y 3 limitaciones trazadas (`docs/limitaciones.md`, `verificar_decisiones.py` 7/7).
+  - **U3.7 (Gate 3 Capstone):** Guion de defensa técnica de 8 minutos (`docs/defensa.md`, `medir_guion.py` 9/9), ensayo cronometrado de 7 pasos (`ensayo_demo.py` 8/8 en ~110 s + plan B `docs/demo_respaldo.md`), rúbrica como datos (`rubrica_gate3.py`) y verificador maestro (`verificar_gate3.py` -> `docs/gate3.md`, 19/19 fuentes locales al 100%, 83/83 tests en verde).
+- **Resultado:**
+  - **Módulo 3 y Gate 3 Capstone implementados, verificados y listos para entrega en Skillnest y defensa técnica en vivo (100% del programa completado en repositorio).**
 
 ---
 
