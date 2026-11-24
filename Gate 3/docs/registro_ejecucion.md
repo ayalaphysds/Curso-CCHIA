@@ -3,10 +3,10 @@
 
 | Campo | Valor |
 |---|---|
-| Fecha | 2026-11-24 11:19 |
-| Commit del código | e81898e1cea3 (sin cambios) |
+| Fecha | 2026-11-24 11:40 |
+| Commit del código | 004b886b0bd7 (sin cambios) |
 | Resumen escenarios | Escenarios: 14 de 14 cumplidos |
-| Resumen pruebas | Pruebas automáticas: 82 pasan, 1 fallan |
+| Resumen pruebas | Pruebas automáticas: 83 pasan, 0 fallan |
 
 ## Componentes ejecutados
 
