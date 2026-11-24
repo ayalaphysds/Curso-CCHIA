@@ -82,7 +82,7 @@ def main() -> int:
             and pasan_esc == cumplidos
             and fallan_t == 0
         )
-        resultados.append(("REG-4", ok_4, f"{cumplidos}/{total} escenarios y {pasan_t} pruebas pasan (0 fallan)"))
+        resultados.append(("REG-4", ok_4, f"{cumplidos}/{total} escenarios y {pasan_t} pruebas pasan ({fallan_t} fallan)"))
 
     # REG-5: respaldos_declarados
     m_resp = PATRON_RESPALDO.search(texto)
